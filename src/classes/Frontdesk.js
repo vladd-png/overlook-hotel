@@ -1,6 +1,6 @@
 class Frontdesk {
   constructor() {
-    this.name = 'Hyrule Hotel';
+    this.name = 'Hotel Hyrule';
     this.rooms = [];
     this.bookings = [];
   }
@@ -11,7 +11,7 @@ class Frontdesk {
 
   }
   removeBooking() {
-    
+
   }
   addRoomToBooking() {
 
