@@ -1,3 +1,6 @@
+import { } from '../index.js'
+
+
 class Manager extends User {
   constructor(name, password) {
     super(name, password);
