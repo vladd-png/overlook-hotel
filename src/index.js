@@ -3,6 +3,11 @@
 
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
+import Bookings from './classes/Booking.js';
+import Frontdesk from './classes/Frontdesk.js';
+import Manager from './classes/Manager.js';
+import Rooms from './classes/Rooms.js';
+import User from './classes/User.js';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
