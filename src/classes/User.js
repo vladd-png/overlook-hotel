@@ -1,7 +1,7 @@
 class User {
-  constructor(name, id) {
-    this.name = name;
-    this.id = id;
+  constructor(user) {
+    this.name = user.name;
+    this.id = user.id;
     this.pastBookings = [];
   }
   accessLogin() {
@@ -14,7 +14,7 @@ class User {
 
   }
   checkPastBookings() {
-    
+
   }
 }
 
