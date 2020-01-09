@@ -19,4 +19,4 @@ class Frontdesk {
 
 }
 
-module.exports = Frontdesk;
+export default Frontdesk;
