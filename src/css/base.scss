@@ -1,6 +1,132 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$primary-background: #F1DCBA;
+$sans-serif: 'Julius Sans One', sans-serif;
+
+* {
+	box-sizing: border-box;
+	margin: 0%;
+	&:after {
+		box-sizing: border-box;
+		margin: 0px;
+    font-family: $sans-serif;
+	}
+	&:before {
+		box-sizing: border-box;
+		margin: 0px;
+    font-family: $sans-serif;
+
+	}
+}
+
 
 body {
-  background-color: $primary-background;
+  background: url("../images/forest-bg.jpg");
+  background-size: cover;
+  overflow-x: hidden;
 }
+
+// ----------------------- login page ------------------- //
+
+#hotel-logo {
+  // height: 300px;
+  // width: 100%;
+  margin-top: -20px;
+  position: relative;
+}
+
+#login-page {
+  display: flex;
+  margin-top: 10%;
+  width: 100%;
+  justify-content: center;
+}
+
+#bg-square {
+  width: 200%;
+  background-color: rgba(241, 220, 186, 0.5);
+  height: 400px;
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h2 {
+  font-size: 1em;
+  padding: 10px;
+}
+
+.label {
+  padding: 50px;
+  margin: 30px;
+}
+
+.manager-instructions {
+  font-size: 0.8em;
+  padding-bottom: 10px;
+}
+
+.login-form {
+  font-family: $sans-serif;
+  font-size: 1.2em;
+  background-color: $primary-background;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  position: absolute;
+  height: 400px;
+}
+
+.user-input {
+  height: 40px;
+  font-size: 1.5em;
+
+}
+
+.login-btn {
+  margin: 10px;
+  width: 200px;
+  height: 45px;
+}
+
+// ----------------------- fairy animation ------------------- //
+
+img.glitter-fairy {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  z-index: -1;
+
+  animation: glitter 3s steps(6, end) infinite normal;
+  -webkit-animation: glitter 3s steps(6, end) infinite normal;
+  -moz-animation: glitter 3s steps(6, end) infinite normal;
+  -ms-animation: glitter 3s steps(6, end) infinite normal;
+  -o-animation: glitter 3s steps(6, end) infinite normal;
+}
+
+@keyframes glitter {
+  0% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+}
+
+// ----------------------- manager page ------------------- //
