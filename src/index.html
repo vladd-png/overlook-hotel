@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Hyrule Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito+Sans|PT+Sans+Caption&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Hyrule Hotel</h1>
-    <ul>
-      <li>Add Fake Awards</li>
-      <li>Search for hotels for Images</li>
-    </ul>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <section id="login-page">
+      <span id="bg-square"></span>
+      <div class="login-form">
+        <img src="./images/HH-logo.svg" id="hotel-logo" alt="Hotel Hylian Main logo with Sheikah Eye">
+        <h1 class="login-instructions">Welcome Valued Hylian</h1>
+        <h2 class="login-instructions">Please Login with Existing Player Name and Dungeon Key</h2>
+        <div class="input">
+          <input autocomplete="off" maxlength="20" class="user-input"></input>
+          <input autocomplete="off" maxlength="20" class="user-input"></input>
+        </div>
+        <div >
+          <label class="label">Player Name</label>
+          <label class="label">Dungeon Key</label>
+        </div>
+        <button class="login-btn">Login</button>
+        <p class="manager-instructions">For Manager Access use Tiger Scroll Login</p>
+      </div>
+    </section>
+    <section id="manager-login-page">
+    </section>
+    <section id="guest-login-page">
+    </section>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
