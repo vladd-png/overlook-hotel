@@ -9,10 +9,40 @@ import Manager from './classes/Manager.js';
 import Rooms from './classes/Rooms.js';
 import User from './classes/User.js';
 
+
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/forest-bg.jpg';
+import './images/HH-logo.svg';
+import './images/fairy.png';
+
+
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+const app = document.querySelector('#login-page');
+
+
+// ----------------- fairy animation ------------------ //
+
+const myRand = () => {
+  let r = 50
+  while (40 < r && r < 60) { r = Math.random() * 100 }
+  return r
+}
+
+for (let i = 40; i < 50; i++) {
+  const delay = Math.random() + 's';
+  const el = document.createElement('img')
+  el.src = './images/fairy.png'
+  el.className = 'glitter-fairy'
+  el.style.top = myRand() + '%'
+  el.style.left = myRand() + '%'
+  el.style.animationDelay = delay
+  el.style.msAnimationDelay = delay
+  el.style.webkitAnimationDelay = delay
+  el.style.monAnimationDelay = delay
+  app.appendChild(el)
+}
