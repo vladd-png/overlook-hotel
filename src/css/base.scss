@@ -1,6 +1,169 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$primary-background: #072526;
+$accent-color: #6D2218;
+$sans-serif: 'Julius Sans One', sans-serif;
+$font-color: #FDF8DF;
+
+* {
+	box-sizing: border-box;
+	margin: 0%;
+	&:after {
+		box-sizing: border-box;
+		margin: 0px;
+    font-family: $sans-serif;
+	}
+	&:before {
+		box-sizing: border-box;
+		margin: 0px;
+    font-family: $sans-serif;
+
+	}
+}
 
 body {
+
+}
+
+// ----------------------- login page ------------------- //
+
+#hotel-logo {
+  margin-top: -20px;
+}
+
+#login-page {
+  background-image: url("../images/forest-bg.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  z-index: 1;
+  color: $font-color;
+}
+
+#bg-square {
+  width: 200%;
+  background-color: rgba(7, 37, 38, 0.6);
+  height: 400px;
+  margin-top: 120px;
+
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h2 {
+  font-size: 1em;
+  padding: 10px;
+}
+
+.label {
+  padding: 50px;
+  margin: 30px;
+}
+
+.manager-instructions {
+  font-size: 0.8em;
+  padding-bottom: 10px;
+}
+
+.login-form {
+  font-family: $sans-serif;
+  font-size: 1.2em;
   background-color: $primary-background;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  position: absolute;
+  height: 400px;
+  z-index: 3;
+  margin-top: 120px;
+}
+
+.user-input {
+  height: 40px;
+  font-size: 1em;
+  padding: 5px;
+  margin: 20px;;
+  width: 300px;
+  background-color: $font-color;
+
+}
+
+.login-btn {
+  margin: 10px;
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  font-size: 0.6em;
+  background-color: $font-color;
+}
+
+.login-btn:hover {
+  background-color: $accent-color;
+  color: white;
+}
+
+#error-message {
+  font-size: 0.8em;
+}
+
+// ----------------------- fairy animation ------------------- //
+
+img.glitter-fairy {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  z-index: 2;
+
+  animation: glitter 3s steps(6, end) infinite normal;
+  -webkit-animation: glitter 3s steps(6, end) infinite normal;
+  -moz-animation: glitter 3s steps(6, end) infinite normal;
+  -ms-animation: glitter 3s steps(6, end) infinite normal;
+  -o-animation: glitter 3s steps(6, end) infinite normal;
+}
+
+@keyframes glitter {
+  0% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+}
+
+// ----------------------- manager page ------------------- //
+
+#manager-login-page {
+  background-color: gray;
+}
+
+
+
+// ----------------------- global styles ------------------- //
+
+.hidden {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  pointer-events: none;
 }

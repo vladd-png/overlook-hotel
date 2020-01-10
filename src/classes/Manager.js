@@ -1,9 +1,9 @@
 import { } from '../index.js'
 
 
-class Manager extends User {
+class Manager {
   constructor(name, password) {
-    super(name, password);
+    // super(name, password);
   }
   searchForUser() {
     this.id
@@ -28,4 +28,4 @@ class Manager extends User {
   }
 }
 
-module.exports = Manager;
+export default Manager;
