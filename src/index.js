@@ -20,6 +20,7 @@ import './images/fairy.png';
 import './images/sunlight.svg';
 
 let user, booking, manager, frontdesk;
+let dateNowResult;
 
 
 // ----------------- variable declarations ------------------ //
@@ -112,7 +113,37 @@ function loadBookings(bookings) {
     let eachBooking = new Booking(booking);
     frontdesk.bookings.push(eachBooking);
   });
-  console.log(frontdesk.bookings);
+  createPieGraph(frontdesk.bookings);
+  // console.log(frontdesk.bookings);
+}
+
+function createPieGraph(bookings) {
+  formatDate();
+  let totalRooms = 0;
+  let unavailableRooms;
+  let eachDate = bookings.forEach(booking => {
+    if (booking.date === dateNowResult) {
+      totalRooms++;
+    }
+    unavailableRooms = ((totalRooms / 25) * 360);
+  })
+  if (unavailableRooms > 180) {
+    $('.pie').html(`<div class="pie-segment" style="--offset: 0; --value: 180; --bg: purple"></div>`);
+  }
+  $('.pie').append(`<div class="pie-segment" style="--offset: 0; --value: 331; --bg: purple"></div>`);
+}
+
+function formatDate() {
+  dateNowResult = "";
+  var d = new Date();
+  var month = (d.getMonth() + 1);
+  if (month <= 9) {
+    dateNowResult += d.getFullYear()+"/0"+(d.getMonth()+1)+"/"+d.getDate();
+  } else {
+    dateNowResult += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
+  }
+  console.log(dateNowResult);
+  return dateNowResult;
 }
 
 function loadHotel() {
@@ -127,7 +158,6 @@ function loadRooms(rooms) {
     let eachRoom = new Room(room);
     frontdesk.rooms.push(eachRoom)
   });
-  // console.log(frontdesk.rooms);
 }
 
 // ----------------- login functionality ------------------ //
