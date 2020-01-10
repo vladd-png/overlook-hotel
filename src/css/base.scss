@@ -33,11 +33,10 @@ body {
 #login-page {
   background-image: url("../images/forest-bg.jpg");
   background-size: cover;
-  height: 100vh;
   display: flex;
   width: 100%;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
   color: $font-color;
 }
 
@@ -46,7 +45,7 @@ body {
   background-color: rgba(7, 37, 38, 0.6);
   height: 400px;
   margin-top: 120px;
-
+  z-index: 1;
 }
 
 h1 {
@@ -119,7 +118,7 @@ img.glitter-fairy {
   position: absolute;
   height: 20px;
   width: 20px;
-  z-index: 2;
+  z-index: 0;
 
   animation: glitter 3s steps(6, end) infinite normal;
   -webkit-animation: glitter 3s steps(6, end) infinite normal;
@@ -151,10 +150,31 @@ img.glitter-fairy {
   }
 }
 
+// ----------------------- sunrays animation ------------------- //
+
+#sunlight {
+  z-index: 0;
+  position: absolute;
+  height: 130vh;
+  margin-top: -100px;
+  margin-left: 300px;
+  opacity: 1;
+  animation: fade 5s infinite normal;
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 0.4 }
+}
+
+
+
 // ----------------------- manager page ------------------- //
 
-#manager-login-page {
+#manager-page {
   background-color: gray;
+  color: black;
+  height: 100%;
 }
 
 
@@ -162,8 +182,12 @@ img.glitter-fairy {
 // ----------------------- global styles ------------------- //
 
 .hidden {
-  height: 0;
-  width: 0;
-  visibility: hidden;
-  pointer-events: none;
+  height: 0vh;
+  width: 0vh;
+  visibility: collapse;
+}
+
+.visible {
+  visibility: visible;
+  height: 100vh;
 }

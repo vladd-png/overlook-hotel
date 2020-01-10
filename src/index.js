@@ -17,6 +17,7 @@ import './css/base.scss';
 import './images/forest-bg.jpg';
 import './images/HH-logo.svg';
 import './images/fairy.png';
+import './images/sunlight.svg';
 
 let user, booking, manager, frontdesk;
 
@@ -65,11 +66,24 @@ function checkLogin(event) {
 }
 
 function sortLogin() {
+  loadHotel();
   if (userName.value === 'manager') {
+    loadManagerPage();
     loginManager();
   } else {
+    loadGuestPage();
     loginGuest();
   }
+}
+
+function loadManagerPage() {
+  $('#login-page').addClass('hidden').removeClass('visible');
+  $('#manager-page').removeClass('hidden').addClass('visible');
+}
+
+function loadGuestPage() {
+  $('#login-page').addClass('hidden').removeClass('visible');
+  $('#guest-page').removeClass('hidden').addClass('visible');
 }
 
 function loginGuest() {
@@ -84,14 +98,13 @@ function findUser(allUsers) {
     return user.id === id;
   });
   user = new User(myUser)
-  console.log(user);
+  // console.log(user);
 }
 
 function loginManager() {
   fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
     .then(response => response.json())
     .then(data => loadBookings(data.bookings))
-    loadHotel();
 }
 
 function loadBookings(bookings) {
@@ -99,7 +112,7 @@ function loadBookings(bookings) {
     let eachBooking = new Booking(booking);
     frontdesk.bookings.push(eachBooking);
   });
-  // console.log(frontdesk.bookings);
+  console.log(frontdesk.bookings);
 }
 
 function loadHotel() {
