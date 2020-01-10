@@ -6,7 +6,7 @@ import $ from 'jquery';
 import Booking from './classes/Booking.js';
 import Frontdesk from './classes/Frontdesk.js';
 import Manager from './classes/Manager.js';
-import Rooms from './classes/Rooms.js';
+import Room from './classes/Rooms.js';
 import User from './classes/User.js';
 
 
@@ -18,7 +18,7 @@ import './images/forest-bg.jpg';
 import './images/HH-logo.svg';
 import './images/fairy.png';
 
-let user, booking, manager;
+let user, booking, manager, frontdesk;
 
 
 // ----------------- variable declarations ------------------ //
@@ -91,13 +91,38 @@ function loginManager() {
   fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
     .then(response => response.json())
     .then(data => loadBookings(data.bookings))
+    loadHotel();
 }
 
 function loadBookings(bookings) {
-  let allBookings = [];
   bookings.forEach(booking => {
     let eachBooking = new Booking(booking);
-    allBookings.push(eachBooking);
+    frontdesk.bookings.push(eachBooking);
   });
-  console.log(allBookings);
+  // console.log(frontdesk.bookings);
 }
+
+function loadHotel() {
+  frontdesk = new Frontdesk;
+  fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
+    .then(response => response.json())
+    .then(data => loadRooms(data.rooms))
+}
+
+function loadRooms(rooms) {
+  rooms.forEach(room => {
+    let eachRoom = new Room(room);
+    frontdesk.rooms.push(eachRoom)
+  });
+  // console.log(frontdesk.rooms);
+}
+
+// ----------------- login functionality ------------------ //
+
+
+
+
+
+
+
+//
