@@ -5,14 +5,15 @@
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito+Sans|PT+Sans+Caption&display=swap" rel="stylesheet">
   </head>
   <body>
-    <section id="login-page" class="">
+    <section id="login-page" class="visible">
+      <img src="./images/sunlight.svg" id="sunlight" alt="sunrays show through the trees">
       <span id="bg-square"></span>
       <div class="login-form">
         <img src="./images/HH-logo.svg" id="hotel-logo" alt="Hotel Hylian Main logo with Sheikah Eye">
         <h1 class="login-instructions">Welcome Valued Hylian</h1>
         <h2 class="login-instructions">Please Login with Existing Player Name and Dungeon Key</h2>
         <div class="input">
-          <input autocomplete="off" maxlength="20" class="user-input" id="user-name" placeholder="Player Name" value="customer35"></input>
+          <input autocomplete="off" maxlength="20" class="user-input" id="user-name" placeholder="Player Name" value="manager"></input>
           <input autocomplete="off" maxlength="20" class="user-input" id="user-password" placeholder="Dungeon Key"></input>
         </div>
         <p id="error-message" class="hidden">Please Enter Player Information</p>
@@ -21,6 +22,8 @@
       </div>
     </section>
     <section id="manager-page" class="hidden">
+      <p>OverLook Hotel Management Access</p>
+      <div class="pie"></div>
     </section>
     <section id="guest-page" class="hidden">
     </section>

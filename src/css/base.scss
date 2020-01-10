@@ -2,7 +2,8 @@
 $primary-background: #072526;
 $accent-color: #6D2218;
 $sans-serif: 'Julius Sans One', sans-serif;
-$font-color: #FDF8DF;
+$accent-color2: #FDF8DF;
+$accent-color3: rgba(7, 37, 38, 0.6);
 
 * {
 	box-sizing: border-box;
@@ -33,12 +34,11 @@ body {
 #login-page {
   background-image: url("../images/forest-bg.jpg");
   background-size: cover;
-  height: 100vh;
   display: flex;
   width: 100%;
   justify-content: center;
-  z-index: 1;
-  color: $font-color;
+  z-index: 2;
+  color: $accent-color2;
 }
 
 #bg-square {
@@ -46,7 +46,7 @@ body {
   background-color: rgba(7, 37, 38, 0.6);
   height: 400px;
   margin-top: 120px;
-
+  z-index: 1;
 }
 
 h1 {
@@ -89,7 +89,7 @@ h2 {
   padding: 5px;
   margin: 20px;;
   width: 300px;
-  background-color: $font-color;
+  background-color: $accent-color2;
 
 }
 
@@ -101,7 +101,7 @@ h2 {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   font-size: 0.6em;
-  background-color: $font-color;
+  background-color: $accent-color2;
 }
 
 .login-btn:hover {
@@ -119,7 +119,7 @@ img.glitter-fairy {
   position: absolute;
   height: 20px;
   width: 20px;
-  z-index: 2;
+  z-index: 0;
 
   animation: glitter 3s steps(6, end) infinite normal;
   -webkit-animation: glitter 3s steps(6, end) infinite normal;
@@ -151,10 +151,59 @@ img.glitter-fairy {
   }
 }
 
+// ----------------------- sunrays animation ------------------- //
+
+#sunlight {
+  z-index: 0;
+  position: absolute;
+  height: 130vh;
+  margin-top: -100px;
+  margin-left: 300px;
+  opacity: 1;
+  animation: fade 5s infinite normal;
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 0.4 }
+}
+
 // ----------------------- manager page ------------------- //
 
-#manager-login-page {
+#manager-page {
   background-color: gray;
+  color: black;
+  height: 100%;
+}
+
+
+// ----------------------- pie graph for rooms ------------------- //
+
+.pie {
+  overflow: hidden;
+  background: $accent-color2;
+  border-radius: 100%;
+  height: calc(var(--size, 200) * 1px);
+  position: relative;
+  width: calc(var(--size, 200) * 1px);
+}
+
+.pie-segment {
+  height: 100%;
+  position: absolute;
+  transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--offset, 0) * 1deg));
+  transform-origin: 50% 100%;
+  width: 100%;
+}
+
+.pie-segment:before {
+  background: $primary-background;
+  content: '';
+  height: 100%;
+  position: absolute;
+  transform: translate(0, 100%) rotate(calc(var(--value, 45) * 1deg));
+  transform-origin: 50% 0;
+  width: 100%;
 }
 
 
@@ -162,8 +211,12 @@ img.glitter-fairy {
 // ----------------------- global styles ------------------- //
 
 .hidden {
-  height: 0;
-  width: 0;
-  visibility: hidden;
-  pointer-events: none;
+  height: 0vh;
+  width: 0vh;
+  visibility: collapse;
+}
+
+.visible {
+  visibility: visible;
+  height: 100vh;
 }
