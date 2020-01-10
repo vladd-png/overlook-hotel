@@ -20,10 +20,16 @@ import './images/fairy.png';
 
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// ----------------- variable declarations ------------------ //
 
 const app = document.querySelector('#login-page');
+// const loginBtn = document.querySelector('.login-btn');
+const errorMsh = document.querySelector('#error-message');
+const userName = document.querySelectorAll('.user-input').value;
 
+// ----------------- event listeners ------------------ //
+
+$('.login-btn').click(checkLogin);
 
 // ----------------- fairy animation ------------------ //
 
@@ -45,4 +51,13 @@ for (let i = 40; i < 50; i++) {
   el.style.webkitAnimationDelay = delay
   el.style.monAnimationDelay = delay
   app.appendChild(el)
+}
+
+// ----------------- login functionality ------------------ //
+
+function checkLogin(event) {
+  event.preventDefault();
+  if (userName === undefined) { $('#error-message').removeClass('hidden') }
+  else { console.log('access granted') }
+    // showManagerLogin();
 }
