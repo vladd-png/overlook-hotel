@@ -1,7 +1,8 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: #F1DCBA;
+$primary-background: #072526;
 $accent-color: #6D2218;
 $sans-serif: 'Julius Sans One', sans-serif;
+$font-color: #FDF8DF;
 
 * {
 	box-sizing: border-box;
@@ -20,9 +21,7 @@ $sans-serif: 'Julius Sans One', sans-serif;
 }
 
 body {
-  background: url("../images/forest-bg.jpg");
-  background-size: cover;
-  overflow-x: hidden;
+
 }
 
 // ----------------------- login page ------------------- //
@@ -32,16 +31,22 @@ body {
 }
 
 #login-page {
+  background-image: url("../images/forest-bg.jpg");
+  background-size: cover;
+  height: 100vh;
   display: flex;
-  margin-top: 10%;
   width: 100%;
   justify-content: center;
+  z-index: 1;
+  color: $font-color;
 }
 
 #bg-square {
   width: 200%;
-  background-color: rgba(241, 220, 186, 0.5);
+  background-color: rgba(7, 37, 38, 0.5);
   height: 400px;
+  margin-top: 120px;
+
 }
 
 h1 {
@@ -74,6 +79,8 @@ h2 {
   width: 50%;
   position: absolute;
   height: 400px;
+  z-index: 3;
+  margin-top: 120px;
 }
 
 .user-input {
@@ -82,6 +89,8 @@ h2 {
   padding: 5px;
   margin: 20px;;
   width: 300px;
+  background-color: $font-color;
+
 }
 
 .login-btn {
@@ -92,11 +101,16 @@ h2 {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   font-size: 0.6em;
+  background-color: $font-color;
 }
 
 .login-btn:hover {
   background-color: $accent-color;
   color: white;
+}
+
+#error-message {
+  font-size: 0.8em;
 }
 
 // ----------------------- fairy animation ------------------- //
@@ -105,7 +119,7 @@ img.glitter-fairy {
   position: absolute;
   height: 20px;
   width: 20px;
-  z-index: -1;
+  z-index: 2;
 
   animation: glitter 3s steps(6, end) infinite normal;
   -webkit-animation: glitter 3s steps(6, end) infinite normal;
@@ -138,3 +152,18 @@ img.glitter-fairy {
 }
 
 // ----------------------- manager page ------------------- //
+
+#manager-login-page {
+  background-color: gray;
+}
+
+
+
+// ----------------------- global styles ------------------- //
+
+.hidden {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
