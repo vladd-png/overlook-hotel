@@ -4,9 +4,6 @@ class User {
     this.id = user.id;
     this.pastBookings = [];
   }
-  accessLogin() {
-
-  }
   bookRoom() {
 
   }

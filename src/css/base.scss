@@ -90,7 +90,6 @@ h2 {
   margin: 20px;;
   width: 300px;
   background-color: $accent-color2;
-
 }
 
 .login-btn {
@@ -117,8 +116,8 @@ h2 {
 
 img.glitter-fairy {
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   z-index: 0;
 
   animation: glitter 3s steps(6, end) infinite normal;
@@ -171,15 +170,82 @@ img.glitter-fairy {
 // ----------------------- manager page ------------------- //
 
 #manager-page {
-  background-color: gray;
+  background-color: $accent-color3;
   color: black;
-  height: 100%;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
+#display-data {
+  margin: 10px;
+  display: flex;
+  margin-top: 3%;
+  flex-direction: column;
+  align-items: center;
+  background-color: $accent-color3;
+  width: 500px;
+  border-radius: 10px;
+  height: 550px;
+}
+
+#todays-date {
+  margin: 25px;
+  font-size: 3.5em;
+  font-family: $sans-serif;
+  color: $accent-color2;
+}
+
+.data-title {
+  margin: 10px;
+  font-size: 1.5em;
+  font-family: $sans-serif;
+  color: $accent-color2;
+}
+
+#todays-revenue {
+  font-size: 4em;
+  font-family: $sans-serif;
+  color: $accent-color2;
+}
+
+.room-data {
+  display: flex;
+  flex-direction: row;
+}
+
+#rooms-available {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: $accent-color2;
+}
+
+#rooms-unavailable {
+  // margin-right: auto;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: $primary-background;
+}
+
+.data-wrapper {
+  font-family: $sans-serif;
+  color: $accent-color2;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  justify-content: space-around;
+  padding: 15px;
+}
 
 // ----------------------- pie graph for rooms ------------------- //
 
-.pie {
+#pie {
+  margin: 20px;
   overflow: hidden;
   background: $accent-color2;
   border-radius: 100%;
