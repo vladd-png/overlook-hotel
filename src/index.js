@@ -115,10 +115,9 @@ function loginManager() {
 function loadBookings(bookings) {
   bookings.forEach(booking => {
     let eachBooking = new Booking(booking);
-    frontdesk.bookings.push(eachBooking);
+    frontdesk.populateHotel(eachBooking);
   });
   createPieGraph(frontdesk.bookings);
-  // console.log(frontdesk.bookings);
 }
 
 function createPieGraph(bookings) {
@@ -163,7 +162,6 @@ function loadHotel() {
 function loadRooms(rooms) {
   rooms.forEach(room => {
     let eachRoom = new Room(room);
-    frontdesk.rooms.push(eachRoom)
   });
 }
 
