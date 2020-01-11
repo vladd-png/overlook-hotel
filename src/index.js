@@ -18,7 +18,7 @@ import './images/forest-bg.jpg';
 import './images/HH-logo.svg';
 import './images/fairy.png';
 import './images/sunlight.svg';
-import './images/avatar.svg';
+import './images/avatar.png';
 
 let user, booking, manager, frontdesk;
 let dateNowResult;
@@ -148,8 +148,6 @@ function formatDate() {
   for(var i = 0; i < 15; i++) {
     $('#todays-date').append(dv[i])
   }
-
-  // return dateNowResult;
 }
 
 function loadHotel() {

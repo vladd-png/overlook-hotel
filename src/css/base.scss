@@ -242,6 +242,20 @@ img.glitter-fairy {
   padding: 15px;
 }
 
+.avatar {
+	height: 100px;
+}
+
+.user-data {
+	font-size: 2em;
+  font-family: $sans-serif;
+  color: $accent-color2;
+}
+
+#search-name {
+	font-size: 0.7em;
+}
+
 // ----------------------- pie graph for rooms ------------------- //
 
 #pie {
