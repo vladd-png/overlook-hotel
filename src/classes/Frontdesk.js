@@ -1,4 +1,5 @@
-import Room from './Rooms.js';
+// import Room from './Rooms.js';
+// import Booking from './Booking.js'
 
 class Frontdesk {
   constructor() {
@@ -6,11 +7,14 @@ class Frontdesk {
     this.rooms = [];
     this.bookings = [];
   }
-  populateHotel() {
-
+  createRooms(rooms) {
+    return this.rooms.push(rooms)
+  }
+  populateHotel(bookings) {
+    return this.bookings.push(bookings);
   }
   filterByRoomType() {
-
+    console.log(this.rooms);
   }
   calculateRoomAvailability() {
 

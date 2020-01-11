@@ -291,6 +291,88 @@ img.glitter-fairy {
 
 
 
+// ----------------------- calendar styles ------------------- //
+
+caption {
+	background: $primary-background;
+	height: 3em;
+	line-height: 3em;
+	box-shadow: 3px 0 2px black;
+	color: white;
+  font-family: $sans-serif;
+}
+
+caption a {
+	color: white;
+}
+
+table {
+	background: $accent-color2;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 20px;
+	border-collapse: collapse;
+	box-shadow: 3px 3px 2px black;
+	font-family: $sans-serif;
+}
+
+table,th,tr {
+	text-align: center;
+	vertical-align: middle;
+}
+
+table thead th {
+	border: solid 1px $primary-background;
+	width: 3em;
+	height: 2em;
+	font-weight: 900;
+  font-family: $sans-serif;
+}
+
+table tbody td {
+	border: solid 1px $primary-background;
+	height: 2.7em;
+}
+
+a {
+	text-decoration: none;
+}
+
+tbody a {
+	display: block;
+	height: 100%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	color: black;
+}
+
+tbody a:hover{
+	background: $accent-color;
+	color: white;
+}
+
+.null {
+	color: gray;
+  font-family: $sans-serif;
+}
+
+.selected{
+	background: blue;
+}
+
+.selected a{
+	color: white;
+}
+
+
+
+
+
+
+
 // ----------------------- global styles ------------------- //
 
 .hidden {
