@@ -18,6 +18,7 @@ import './images/forest-bg.jpg';
 import './images/HH-logo.svg';
 import './images/fairy.png';
 import './images/sunlight.svg';
+import './images/avatar.svg';
 
 let user, booking, manager, frontdesk;
 let dateNowResult;
@@ -128,22 +129,27 @@ function createPieGraph(bookings) {
     unavailableRooms = ((totalRooms / 25) * 360);
   })
   if (unavailableRooms > 180) {
-    $('.pie').html(`<div class="pie-segment" style="--offset: 0; --value: 180; --bg: purple"></div>`);
+    $('#pie').html(`<div class="pie-segment" style="--offset: 0; --value: 180"></div>`);
   }
-  $('.pie').append(`<div class="pie-segment" style="--offset: 0; --value: 331; --bg: purple"></div>`);
+  $('#pie').append(`<div class="pie-segment" style="--offset: 0; --value: ${unavailableRooms}"></div>`);
 }
 
 function formatDate() {
   dateNowResult = "";
+  // dateDisplay = "";
   var d = new Date();
+  var dv  = Date(Date.now()).toString();
   var month = (d.getMonth() + 1);
   if (month <= 9) {
     dateNowResult += d.getFullYear()+"/0"+(d.getMonth()+1)+"/"+d.getDate();
   } else {
     dateNowResult += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
   }
-  console.log(dateNowResult);
-  return dateNowResult;
+  for(var i = 0; i < 15; i++) {
+    $('#todays-date').append(dv[i])
+  }
+
+  // return dateNowResult;
 }
 
 function loadHotel() {
