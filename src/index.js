@@ -181,10 +181,13 @@ function sortGuest(allUsers) {
     return user.id === id;
   });
   user = new User(myUser)
-  console.log(user);
+  populateData(user);
 }
 
-
+function populateData(user) {
+  $('.past-res').text(user.pastBookings);
+  $('.guest-revenue').text(user.id);
+}
 
 
 
