@@ -7,11 +7,14 @@ class Frontdesk {
     this.rooms = [];
     this.bookings = [];
   }
-  populateHotel(rooms) {
-    return this.bookings.push(rooms);
+  createRooms(rooms) {
+    return this.rooms.push(rooms)
+  }
+  populateHotel(bookings) {
+    return this.bookings.push(bookings);
   }
   filterByRoomType() {
-
+    console.log(this.rooms);
   }
   calculateRoomAvailability() {
 

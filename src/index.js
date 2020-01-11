@@ -35,6 +35,7 @@ const guestName = document.querySelector('#search-name');
 
 $('.login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
+$('.test').click(filterRooms);
 
 
 // ----------------- fairy animation ------------------ //
@@ -102,7 +103,7 @@ function findUser(allUsers) {
   let myUser = allUsers.find(user => {
     return user.id === id;
   });
-  user = new User(myUser)
+  user = new User(myUser);
   // console.log(user);
 }
 
@@ -162,6 +163,7 @@ function loadHotel() {
 function loadRooms(rooms) {
   rooms.forEach(room => {
     let eachRoom = new Room(room);
+    frontdesk.createRooms(eachRoom);
   });
 }
 
@@ -189,4 +191,9 @@ function populateData(user) {
 
 
 
-//
+// ----------------- guest filter functionality ------------------ //
+
+function filterRooms() {
+
+  console.log(frontdesk.filterByRoomType());
+}
