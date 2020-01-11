@@ -29,10 +29,13 @@ let dateNowResult;
 const app = document.querySelector('#login-page');
 const errorMsh = document.querySelector('#error-message');
 const userName = document.querySelector('#user-name');
+const guestName = document.querySelector('#search-name');
 
 // ----------------- event listeners ------------------ //
 
 $('.login-btn').click(checkLogin);
+$('.search-btn').click(findGuest);
+
 
 // ----------------- fairy animation ------------------ //
 
@@ -166,8 +169,20 @@ function loadRooms(rooms) {
 
 // ----------------- guest search functionality ------------------ //
 
-$('')
+function findGuest() {
+  fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
+    .then(response => response.json())
+    .then(data => sortGuest(data.users))
+}
 
+function sortGuest(allUsers) {
+  let id = parseInt(guestName.value.split('r')[1]);
+  let myUser = allUsers.find(user => {
+    return user.id === id;
+  });
+  user = new User(myUser)
+  console.log(user);
+}
 
 
 
