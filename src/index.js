@@ -79,6 +79,7 @@ function sortLogin() {
   } else {
     loadGuestPage();
     loginGuest();
+    createCalendar();
   }
 }
 
@@ -140,16 +141,16 @@ function createPieGraph(bookings) {
 function formatDate() {
   dateNowResult = "";
   // dateDisplay = "";
-  var d = new Date();
-  var dv  = Date(Date.now()).toString();
-  var month = (d.getMonth() + 1);
+  let d = new Date();
+  let dn  = Date(Date.now()).toString();
+  let month = (d.getMonth() + 1);
   if (month <= 9) {
     dateNowResult += d.getFullYear()+"/0"+(d.getMonth()+1)+"/"+d.getDate();
   } else {
     dateNowResult += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
   }
   for(var i = 0; i < 15; i++) {
-    $('#todays-date').append(dv[i])
+    $('#todays-date').append(dn[i])
   }
 }
 
@@ -189,11 +190,19 @@ function populateData(user) {
   $('.guest-revenue').text(user.id);
 }
 
+// ----------------- calendar functionality ------------------ //
+
+
+function createCalendar() {
+  let d = new Date();
+  let month = (d.getMonth());
+  let allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  $('.calendar-month').text(allMonths[month]);
+}
 
 
 // ----------------- guest filter functionality ------------------ //
 
 function filterRooms() {
-
   console.log(frontdesk.filterByRoomType());
 }
