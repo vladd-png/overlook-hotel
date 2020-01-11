@@ -192,24 +192,26 @@ img.glitter-fairy {
   height: 550px;
 }
 
+.font-color {
+	font-family: $sans-serif;
+	color: $accent-color2;
+}
+
 #todays-date {
   margin: 25px;
   font-size: 3.5em;
-  font-family: $sans-serif;
-  color: $accent-color2;
+  @extend .font-color
 }
 
 .data-title {
   margin: 10px;
   font-size: 1.5em;
-  font-family: $sans-serif;
-  color: $accent-color2;
+	@extend .font-color
 }
 
 #todays-revenue {
   font-size: 4em;
-  font-family: $sans-serif;
-  color: $accent-color2;
+	@extend .font-color
 }
 
 .room-data {
@@ -225,7 +227,6 @@ img.glitter-fairy {
 }
 
 #rooms-unavailable {
-  // margin-right: auto;
   display: block;
   width: 50px;
   height: 50px;
@@ -233,13 +234,12 @@ img.glitter-fairy {
 }
 
 .data-wrapper {
-  font-family: $sans-serif;
-  color: $accent-color2;
   display: flex;
   flex-direction: column;
   margin-left: 25px;
   justify-content: space-around;
   padding: 15px;
+	@extend .font-color
 }
 
 .avatar {
@@ -248,12 +248,15 @@ img.glitter-fairy {
 
 .user-data {
 	font-size: 2em;
-  font-family: $sans-serif;
-  color: $accent-color2;
+	@extend .font-color
 }
 
 #search-name {
 	font-size: 0.7em;
+}
+
+.search-btn {
+	@extend .login-btn
 }
 
 // ----------------------- pie graph for rooms ------------------- //

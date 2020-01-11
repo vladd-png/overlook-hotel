@@ -164,8 +164,9 @@ function loadRooms(rooms) {
   });
 }
 
-// ----------------- login functionality ------------------ //
+// ----------------- guest search functionality ------------------ //
 
+$('')
 
 
 
