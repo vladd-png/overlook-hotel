@@ -18,6 +18,7 @@ import './images/forest-bg.jpg';
 import './images/HH-logo.svg';
 import './images/fairy.png';
 import './images/sunlight.svg';
+import './images/avatar.png';
 
 let user, booking, manager, frontdesk;
 let dateNowResult;
@@ -28,10 +29,13 @@ let dateNowResult;
 const app = document.querySelector('#login-page');
 const errorMsh = document.querySelector('#error-message');
 const userName = document.querySelector('#user-name');
+const guestName = document.querySelector('#search-name');
 
 // ----------------- event listeners ------------------ //
 
 $('.login-btn').click(checkLogin);
+$('.search-btn').click(findGuest);
+
 
 // ----------------- fairy animation ------------------ //
 
@@ -128,22 +132,25 @@ function createPieGraph(bookings) {
     unavailableRooms = ((totalRooms / 25) * 360);
   })
   if (unavailableRooms > 180) {
-    $('.pie').html(`<div class="pie-segment" style="--offset: 0; --value: 180; --bg: purple"></div>`);
+    $('#pie').html(`<div class="pie-segment" style="--offset: 0; --value: 180"></div>`);
   }
-  $('.pie').append(`<div class="pie-segment" style="--offset: 0; --value: 331; --bg: purple"></div>`);
+  $('#pie').append(`<div class="pie-segment" style="--offset: 0; --value: ${unavailableRooms}"></div>`);
 }
 
 function formatDate() {
   dateNowResult = "";
+  // dateDisplay = "";
   var d = new Date();
+  var dv  = Date(Date.now()).toString();
   var month = (d.getMonth() + 1);
   if (month <= 9) {
     dateNowResult += d.getFullYear()+"/0"+(d.getMonth()+1)+"/"+d.getDate();
   } else {
     dateNowResult += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
   }
-  console.log(dateNowResult);
-  return dateNowResult;
+  for(var i = 0; i < 15; i++) {
+    $('#todays-date').append(dv[i])
+  }
 }
 
 function loadHotel() {
@@ -160,11 +167,27 @@ function loadRooms(rooms) {
   });
 }
 
-// ----------------- login functionality ------------------ //
+// ----------------- guest search functionality ------------------ //
 
+function findGuest() {
+  fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
+    .then(response => response.json())
+    .then(data => sortGuest(data.users))
+}
 
+function sortGuest(allUsers) {
+  let id = parseInt(guestName.value.split('r')[1]);
+  let myUser = allUsers.find(user => {
+    return user.id === id;
+  });
+  user = new User(myUser)
+  populateData(user);
+}
 
-
+function populateData(user) {
+  $('.past-res').text(user.pastBookings);
+  $('.guest-revenue').text(user.id);
+}
 
 
 

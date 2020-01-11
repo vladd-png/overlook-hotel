@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Hyrule Hotel</title>
+    <title>Hotel Hyrule</title>
+    <link rel="icon" type="image/png" href="./images/fairy.png">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito+Sans|PT+Sans+Caption&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -22,8 +23,34 @@
       </div>
     </section>
     <section id="manager-page" class="hidden">
-      <p>OverLook Hotel Management Access</p>
-      <div class="pie"></div>
+      <div id="display-data">
+        <p class="data-title">Today's Numbers For</p>
+        <div id="todays-date"></div>
+        <p class="data-title">Total Day's Revenue</p>
+        <div id="todays-revenue">$17,342</div>
+        <div class="room-data">
+          <div id="pie"></div>
+          <div class="data-wrapper">
+            <div id="rooms-available"></div>
+            <p>17 Rooms Available</p>
+            <div id="rooms-unavailable"></div>
+            <p>88% Occupied</p>
+          </div>
+        </div>
+      </div>
+      <div id="display-data">
+        <p class="data-title">Search for Guest</p>
+        <div class="user-data">
+          <title>Guest Name</title>
+          <input autocomplete="off" maxlength="20" class="user-input" id="search-name" placeholder="Hylian Name"></input>
+          <button class="search-btn">Search For Guest</button>
+          <p>Past Reservations</p>
+          <div class="past-res"></div>
+          <p>Total Revenue</p>
+          <div class="guest-revenue"></div>
+        </div>
+        <img src="./images/avatar.png" class="avatar" alt="Profile Picture of Guest">
+      </div>
     </section>
     <section id="guest-page" class="hidden">
     </section>
