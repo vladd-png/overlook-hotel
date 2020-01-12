@@ -36,7 +36,7 @@ const guestName = document.querySelector('#search-name');
 $('.login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
 $('.test').click(filterRooms);
-
+$('#calendar').click(displayDate);
 
 // ----------------- fairy animation ------------------ //
 
@@ -199,6 +199,14 @@ function createCalendar() {
   let month = (d.getMonth());
   let allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   $('.calendar-month').text(allMonths[month]);
+}
+
+function displayDate() {
+  event.preventDefault();
+  if (event.toElement.text === undefined) {
+  } else {
+  $('.selected-date').html(`January ${event.toElement.text}, 2020`)
+  }
 }
 
 
