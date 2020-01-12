@@ -37,6 +37,9 @@ $('.login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
 $('.test').click(filterRooms);
 $('#calendar').click(displayDate);
+$('#book').click(changeToBookTab);
+$('#past').click(changeToPastTab);
+$('#future').click(changeToFutureTab);
 
 // ----------------- fairy animation ------------------ //
 
@@ -218,4 +221,31 @@ function filterRooms() {
 
 function showName(user) {
   $('.guest-name').html(`<div class="fade-in">Welcome Back ${user.name}</div>`);
+}
+
+function changeToBookTab() {
+  $('#book-room').removeClass('hidden');
+  $('#past-rooms').addClass('hidden');
+  $('#future-rooms').addClass('hidden');
+  $('#book').removeClass('inactive-tab');
+  $('#past').addClass('inactive-tab');
+  $('#future').addClass('inactive-tab');
+}
+
+function changeToPastTab() {
+  $('#past-rooms').removeClass('hidden');
+  $('#book-room').addClass('hidden');
+  $('#future-rooms').addClass('hidden');
+  $('#past').removeClass('inactive-tab');
+  $('#book').addClass('inactive-tab');
+  $('#future').addClass('inactive-tab');
+}
+
+function changeToFutureTab() {
+  $('#future-rooms').removeClass('hidden');
+  $('#past-rooms').addClass('hidden');
+  $('#book-room').addClass('hidden');
+  $('#future').removeClass('inactive-tab');
+  $('#past').addClass('inactive-tab');
+  $('#book').addClass('inactive-tab');
 }
