@@ -22,7 +22,7 @@ $accent-color3: rgba(7, 37, 38, 0.6);
 }
 
 body {
-
+	overflow: hidden;
 }
 
 // ----------------------- login page ------------------- //
@@ -297,7 +297,6 @@ caption {
 	background: $primary-background;
 	height: 3em;
 	line-height: 3em;
-	box-shadow: 3px 0 2px black;
 	color: white;
   font-family: $sans-serif;
 }
@@ -308,14 +307,10 @@ caption a {
 
 table {
 	background: $accent-color2;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
 	font-size: 20px;
 	border-collapse: collapse;
-	box-shadow: 3px 3px 2px black;
 	font-family: $sans-serif;
+	margin-top: 30px;
 }
 
 table,th,tr {
@@ -327,7 +322,6 @@ table thead th {
 	border: solid 1px $primary-background;
 	width: 3em;
 	height: 2em;
-	font-weight: 900;
   font-family: $sans-serif;
 }
 
@@ -367,11 +361,129 @@ tbody a:hover{
 	color: white;
 }
 
+// ----------------------- guest styling ------------------- //
 
+#guest-page {
+	background-image: url("../images/forest-bg.jpg");
+	background-size: cover;
+	margin-top: -50%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
 
+.booking-form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 700px;
+	height: 59.4%;
+	background-color: $accent-color;
+}
 
+.booking {
+	font-family: $sans-serif;
+	font-size: 1.3em;
+	color: $accent-color2;
+	text-align: center;
+	padding-top: 11px;
+}
 
+#reso-btn {
+	display: block;
+	height: 54px;
+	margin: 0px;
+	border-radius: 0px;
+}
 
+.guest-name {
+	font-family: $sans-serif;
+	font-size: 1.5em;
+	color: $accent-color2;
+}
+
+.inactive-tab {
+	background-color: $accent-color2;
+	color: $accent-color3;
+	height: 54px;
+	padding-top: 5px;
+}
+
+#book-room {
+	position: absolute;
+
+}
+
+.booking-data {
+	display: block;
+	font-size: 1.5em;
+	color: $accent-color2;
+	font-family: $sans-serif;
+	padding: 15px;
+	margin-top: 50px;
+}
+
+.room-data {
+	display: block;
+	line-height: 30px;
+	@extend .booking-data
+}
+
+.vertical-menu {
+	position: absolute;
+  width: 400px;
+  height: 315px;
+  overflow-y: auto;
+	font-family: $sans-serif;
+	margin-left: 270px;
+	margin-top: -328px;
+}
+
+.vertical-menu a {
+  background-color: $accent-color2;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: $accent-color3;
+  color: $accent-color2;
+}
+
+#room-btn {
+	height: 35px;
+}
+
+// ----------------------- guest name animation ------------------- //
+
+.fade-in {
+	-webkit-animation: fade-in 2.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 2.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 // ----------------------- global styles ------------------- //
 
@@ -379,6 +491,7 @@ tbody a:hover{
   height: 0vh;
   width: 0vh;
   visibility: collapse;
+	pointer-events: none;
 }
 
 .visible {

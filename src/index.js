@@ -30,13 +30,20 @@ const app = document.querySelector('#login-page');
 const errorMsh = document.querySelector('#error-message');
 const userName = document.querySelector('#user-name');
 const guestName = document.querySelector('#search-name');
+const roomType = document.querySelector('#rooms');
+const bedType = document.querySelector('#beds');
+const bidetType = document.querySelector('#bidets');
 
 // ----------------- event listeners ------------------ //
 
 $('.login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
 $('.test').click(filterRooms);
-
+$('#calendar').click(displayDate);
+$('#book').click(changeToBookTab);
+$('#past').click(changeToPastTab);
+$('#future').click(changeToFutureTab);
+$('#room-btn').mouseup(showRoomsAvailable);
 
 // ----------------- fairy animation ------------------ //
 
@@ -105,6 +112,7 @@ function findUser(allUsers) {
     return user.id === id;
   });
   user = new User(myUser);
+  showName(myUser);
   // console.log(user);
 }
 
@@ -166,6 +174,7 @@ function loadRooms(rooms) {
     let eachRoom = new Room(room);
     frontdesk.createRooms(eachRoom);
   });
+  // showRoomsAvailable(frontdesk.rooms);
 }
 
 // ----------------- guest search functionality ------------------ //
@@ -200,9 +209,63 @@ function createCalendar() {
   $('.calendar-month').text(allMonths[month]);
 }
 
+function displayDate() {
+  event.preventDefault();
+  if (event.toElement.text === undefined) {
+  } else {
+  $('.selected-date').html(`January ${event.toElement.text}, 2020`)
+  }
+}
 
-// ----------------- guest filter functionality ------------------ //
+
+// ----------------- guest functionality ------------------ //
 
 function filterRooms() {
   console.log(frontdesk.filterByRoomType());
+}
+
+function showName(user) {
+  $('.guest-name').html(`<div class="fade-in">Welcome Back ${user.name}</div>`);
+}
+
+function changeToBookTab() {
+  $('#book-room').removeClass('hidden');
+  $('#past-rooms').addClass('hidden');
+  $('#future-rooms').addClass('hidden');
+  $('#book').removeClass('inactive-tab');
+  $('#past').addClass('inactive-tab');
+  $('#future').addClass('inactive-tab');
+}
+
+function changeToPastTab() {
+  $('#past-rooms').removeClass('hidden');
+  $('#book-room').addClass('hidden');
+  $('#future-rooms').addClass('hidden');
+  $('#past').removeClass('inactive-tab');
+  $('#book').addClass('inactive-tab');
+  $('#future').addClass('inactive-tab');
+}
+
+function changeToFutureTab() {
+  $('#future-rooms').removeClass('hidden');
+  $('#past-rooms').addClass('hidden');
+  $('#book-room').addClass('hidden');
+  $('#future').removeClass('inactive-tab');
+  $('#past').addClass('inactive-tab');
+  $('#book').addClass('inactive-tab');
+}
+
+function showRoomsAvailable() {
+  let chosenRoom = roomType.options[roomType.selectedIndex].value;
+  let chosenBed = bedType.options[bedType.selectedIndex].value;
+  let chosenBidet = bidetType.options[bidetType.selectedIndex].value;
+  let bidetData = frontdesk.rooms.filter(room => {
+    return room.bidet === chosenRoom;
+  });
+  let bedData = frontdesk.rooms.filter(room => {
+    return room.bedSize === chosenBed;
+  });
+  let roomData = frontdesk.rooms.filter(room => {
+    return room.roomType === chosenBidet;
+  })
 }
