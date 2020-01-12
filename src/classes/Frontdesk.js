@@ -6,6 +6,7 @@ class Frontdesk {
     this.name = 'Hotel Hyrule';
     this.rooms = [];
     this.bookings = [];
+    this.unavailableRooms = [];
   }
   createRooms(rooms) {
     return this.rooms.push(rooms)
@@ -13,13 +14,34 @@ class Frontdesk {
   populateHotel(bookings) {
     return this.bookings.push(bookings);
   }
-  filterByRoomType(size, date) {
+  findFullRooms(date) {
+    this.unavailableRooms = [];
+    return this.bookings.filter(booking => {
+      if (booking.date === date) {
+        this.unavailableRooms.push(booking.roomNumber);
+      }
+    });
+  }
+  findEmptyRooms() {
     return this.rooms.reduce((acc, room) => {
-      if(room.roomType === size && room.date === date) {
-        acc.push(room)
+      if(!this.unavailableRooms.includes(room.number)) {
+        acc.push(room);
       }
       return acc;
     }, [])
+  }
+  filterByRoomType(size, date) {
+    this.findFullRooms(date);
+    console.log(this.unavailableRooms);
+    return this.rooms.reduce((acc, room) => {
+      if(room.roomType === size) {
+        if(!this.unavailableRooms.includes(room.number)) {
+          acc.push(room);
+        }
+      }
+      console.log(acc);
+      return acc;
+    }, []);
   }
   calculateRoomAvailability() {
 
@@ -27,8 +49,14 @@ class Frontdesk {
   removeBooking() {
 
   }
-  addRoomToBooking() {
-
+  addRoomToBooking(user) {
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user),
+    });
   }
   totalDaysRevenue(room) {
     let total = 0;
