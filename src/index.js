@@ -174,7 +174,6 @@ function loadRooms(rooms) {
     let eachRoom = new Room(room);
     frontdesk.createRooms(eachRoom);
   });
-  // showRoomsAvailable(frontdesk.rooms);
 }
 
 // ----------------- guest search functionality ------------------ //
@@ -215,6 +214,7 @@ function displayDate() {
   } else {
   $('.selected-date').html(`January ${event.toElement.text}, 2020`)
   }
+  showRoomsAvailable(event.toElement)
 }
 
 
@@ -255,17 +255,12 @@ function changeToFutureTab() {
   $('#book').addClass('inactive-tab');
 }
 
-function showRoomsAvailable() {
+function showRoomsAvailable(event) {
+  $('.room-links').children("a").remove();
   let chosenRoom = roomType.options[roomType.selectedIndex].value;
-  let chosenBed = bedType.options[bedType.selectedIndex].value;
-  let chosenBidet = bidetType.options[bidetType.selectedIndex].value;
-  let bidetData = frontdesk.rooms.filter(room => {
-    return room.bidet === chosenRoom;
+  let dateChosen = event.text;
+  let roomsAvaialble = frontdesk.filterByRoomType(chosenRoom, dateChosen);
+  roomsAvaialble.forEach(room => {
+    $('.room-links').append(`<a href="#">Room ${room.number} for $${room.costPerNight} a Night is Available</a>`)
   });
-  let bedData = frontdesk.rooms.filter(room => {
-    return room.bedSize === chosenBed;
-  });
-  let roomData = frontdesk.rooms.filter(room => {
-    return room.roomType === chosenBidet;
-  })
 }
