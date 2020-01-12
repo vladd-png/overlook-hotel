@@ -15,10 +15,10 @@
         <h2 class="login-instructions">Please Login with Existing Player Name and Dungeon Key</h2>
         <div class="input">
           <input autocomplete="off" maxlength="20" class="user-input" id="user-name" placeholder="Player Name" value="customer21"></input>
-          <input autocomplete="off" maxlength="20" class="user-input" id="user-password" placeholder="Dungeon Key"></input>
+          <input autocomplete="off" maxlength="20" class="user-input" id="user-password" type="password" placeholder="Dungeon Key"></input>
         </div>
         <p id="error-message" class="hidden">Please Enter Player Information</p>
-        <button class="login-btn">Login</button>
+        <button class="login-btn" id="login-btn">Login</button>
         <p class="manager-instructions">For Manager Access use Tiger Scroll Login</p>
       </div>
     </section>
@@ -53,9 +53,10 @@
       </div>
     </section>
     <section id="guest-page" class="hidden">
+      <img src="./images/HH-logo.svg" class="title-logo" alt="Hotel Hyrule Company Logo">
       <div class="calendar-form">
         <h1 class="guest-name"></h1>
-        <table id="calendar" summary="a calendar">
+        <table id="jan-calendar" summary="a january calendar">
     			<caption>
     				<div class="calendar-month"></div>
     			</caption>
@@ -75,49 +76,114 @@
     					<td class="null">29</td>
     					<td class="null">30</td>
     					<td class="null">31</td>
-    					<td><a href="#">1</a></td>
-    					<td><a href="#">2</a></td>
-    					<td><a href="#">3</a></td>
-    					<td><a href="#">4</a></td>
+    					<td><a class="jan">1</a></td>
+    					<td><a class="jan">2</a></td>
+    					<td><a class="jan">3</a></td>
+    					<td><a class="jan">4</a></td>
     				</tr>
     				<tr>
-    					<td><a href="#">5</a></td>
-    					<td><a href="#">6</a></td>
-    					<td><a href="#">7</a></td>
-    					<td><a href="#">8</a></td>
-    					<td><a href="#">9</a></td>
-    					<td><a href="#">10</a></td>
-    					<td><a href="#">11</a></td>
+    					<td><a class="jan">5</a></td>
+    					<td><a class="jan">6</a></td>
+    					<td><a class="jan">7</a></td>
+    					<td><a class="jan">8</a></td>
+    					<td><a class="jan">9</a></td>
+    					<td><a class="jan">10</a></td>
+    					<td><a class="jan">11</a></td>
     				</tr>
     				<tr>
-    					<td><a href="#">12</a></td>
-    					<td><a href="#">13</a></td>
-    					<td><a href="#">14</a></td>
-    					<td><a href="#">15</a></td>
-    					<td><a href="#">16</a></td>
-    					<td><a href="#">17</a></td>
-    					<td><a href="#">18</a></td>
+    					<td><a class="jan">12</a></td>
+    					<td><a class="jan">13</a></td>
+    					<td><a class="jan">14</a></td>
+    					<td><a class="jan">15</a></td>
+    					<td><a class="jan">16</a></td>
+    					<td><a class="jan">17</a></td>
+    					<td><a class="jan">18</a></td>
     				</tr>
     				<tr>
-    					<td><a href="#">19</a></td>
-    					<td><a href="#">20</a></td>
-    					<td><a href="#">21</a></td>
-    					<td><a href="#">22</a></td>
-    					<td><a href="#">23</a></td>
-    					<td><a href="#">24</a></td>
-    					<td><a href="#">25</a></td>
+    					<td><a class="jan">19</a></td>
+    					<td><a class="jan">20</a></td>
+    					<td><a class="jan">21</a></td>
+    					<td><a class="jan">22</a></td>
+    					<td><a class="jan">23</a></td>
+    					<td><a class="jan">24</a></td>
+    					<td><a class="jan">25</a></td>
     				</tr>
     				<tr>
-    					<td><a href="#">26</a></td>
-    					<td><a href="#">27</a></td>
-    					<td><a href="#">28</a></td>
-    					<td><a href="#">29</a></td>
-    					<td><a href="#">30</a></td>
-    					<td><a href="#">31</a></td>
+    					<td><a class="jan">26</a></td>
+    					<td><a class="jan">27</a></td>
+    					<td><a class="jan">28</a></td>
+    					<td><a class="jan">29</a></td>
+    					<td><a class="jan">30</a></td>
+    					<td><a class="jan">31</a></td>
     					<td class="null">1</td>
     				</tr>
     			</tbody>
     		</table>
+        <button id="feb-btn" class="">Show February</button>
+        <table id="feb-calendar" class="hidden" summary="a february calendar">
+    			<caption>
+    				<div class="calendar-month">February</div>
+    			</caption>
+    			<thead>
+    				<tr>
+    					<th scope="col">Sun</th>
+    					<th scope="col">Mon</th>
+    					<th scope="col">Tue</th>
+    					<th scope="col">Wed</th>
+    					<th scope="col">Tur</th>
+    					<th scope="col">Fri</th>
+    					<th scope="col">Sat</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr>
+    					<td class="null">26</td>
+    					<td class="null">27</td>
+    					<td class="null">28</td>
+    					<td class="null">29</td>
+    					<td class="null">30</td>
+    					<td class="null">31</td>
+    					<td><a class="feb">1</a></td>
+    				</tr>
+    				<tr>
+    					<td><a class="feb">2</a></td>
+    					<td><a class="feb">3</a></td>
+    					<td><a class="feb">4</a></td>
+    					<td><a class="feb">5</a></td>
+    					<td><a class="feb">6</a></td>
+    					<td><a class="feb">7</a></td>
+    					<td><a class="feb">8</a></td>
+    				</tr>
+    				<tr>
+    					<td><a class="feb">9</a></td>
+    					<td><a class="feb">10</a></td>
+    					<td><a class="feb">11</a></td>
+    					<td><a class="feb">12</a></td>
+    					<td><a class="feb">13</a></td>
+    					<td><a class="feb">14</a></td>
+    					<td><a class="feb">15</a></td>
+    				</tr>
+    				<tr>
+    					<td><a class="feb">16</a></td>
+    					<td><a class="feb">17</a></td>
+    					<td><a class="feb">18</a></td>
+    					<td><a class="feb">19</a></td>
+    					<td><a class="feb">20</a></td>
+    					<td><a class="feb">21</a></td>
+    					<td><a class="feb">22</a></td>
+    				</tr>
+    				<tr>
+    					<td><a class="feb">23</a></td>
+    					<td><a class="feb">24</a></td>
+    					<td><a class="feb">25</a></td>
+    					<td><a class="feb">26</a></td>
+    					<td><a class="feb">27</a></td>
+    					<td><a class="feb">28</a></td>
+    					<td><a class="feb">29</a></td>
+    				</tr>
+    			</tbody>
+    		</table>
+        <button id="jan-btn" class="hidden">Show January</button>
       </div>
       <div class="booking-form">
         <h3 class="booking" id="book">Book A Reservation</h3>
@@ -127,41 +193,20 @@
       </div>
       <div id="book-room">
         <div class="booking-data">
-          <p>Date Selected <div class="selected-date"></div></p>
+          <p>Select A Date<div class="selected-date"></div></p>
         </div>
         <div class="room-data">
           <p>Choose Room Type</p>
           <select id="rooms">
-            <option class="room" value="single">Single</option>
+            <option class="room" value="single room">Single</option>
             <option class="room" value="junior suite">Junior Suite</option>
             <option class="room" value="suite">Suite</option>
             <option class="room" value="residential suite">Residential Suite</option>
           </select>
-          <p>Choose Bed Size</p>
-          <select id="beds">
-            <option class="bed" value="full">Full</option>
-            <option class="bed" value="queen">Queen</option>
-            <option class="bed" value="king">King</option>
-          </select>
-          <p>Optional Bidet</p>
-          <select id="bidets">
-            <option class="bidet" value="true">Yes Please</option>
-            <option class="bidet" value="false">No Thank You</option>
-          </select>
-        </div>
         <button class="login-btn" id="room-btn">Filter</button>
+        <button class="login-btn" id="reset-btn">Reset Selection</button>
         <div class="vertical-menu">
-          <a href="#" class="active">Available Rooms</a>
-          <!-- <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-          <a href="#">Link 4</a>
-          <a href="#">Link 5</a>
-          <a href="#">Link 6</a>
-          <a href="#">Link 7</a>
-          <a href="#">Link 8</a>
-          <a href="#">Link 9</a>
-          <a href="#">Link 10</a> -->
+          <a class="active room-links">Available Rooms</a>
         </div>
       </div>
       <div id="past-rooms" class="hidden">

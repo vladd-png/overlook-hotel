@@ -21,7 +21,7 @@ import './images/sunlight.svg';
 import './images/avatar.png';
 
 let user, booking, manager, frontdesk;
-let dateNowResult;
+let dateNowResult, pickedRoom, formattedDateNum;
 
 
 // ----------------- variable declarations ------------------ //
@@ -36,14 +36,24 @@ const bidetType = document.querySelector('#bidets');
 
 // ----------------- event listeners ------------------ //
 
-$('.login-btn').click(checkLogin);
+$('#login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
-$('.test').click(filterRooms);
-$('#calendar').click(displayDate);
+$('#feb-btn').click(changeMonths);
+$('#jan-btn').click(changeMonths);
 $('#book').click(changeToBookTab);
 $('#past').click(changeToPastTab);
 $('#future').click(changeToFutureTab);
-$('#room-btn').mouseup(showRoomsAvailable);
+$('#jan-calendar').mouseup(displayDate);
+$('#feb-calendar').mouseup(displayDate);
+$('#room-btn').click(sortByRoomType);
+$('#reset-btn').click(resetSelection);
+$('.vertical-menu').click(showSelectedRoom);
+$('#reso-btn').click(createReservation);
+
+
+// ----------------- helper functions ------------------ //
+
+
 
 // ----------------- fairy animation ------------------ //
 
@@ -113,7 +123,6 @@ function findUser(allUsers) {
   });
   user = new User(myUser);
   showName(myUser);
-  // console.log(user);
 }
 
 function loginManager() {
@@ -148,7 +157,6 @@ function createPieGraph(bookings) {
 
 function formatDate() {
   dateNowResult = "";
-  // dateDisplay = "";
   let d = new Date();
   let dn  = Date(Date.now()).toString();
   let month = (d.getMonth() + 1);
@@ -163,6 +171,7 @@ function formatDate() {
 }
 
 function loadHotel() {
+  loginManager();
   frontdesk = new Frontdesk;
   fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
     .then(response => response.json())
@@ -174,7 +183,6 @@ function loadRooms(rooms) {
     let eachRoom = new Room(room);
     frontdesk.createRooms(eachRoom);
   });
-  // showRoomsAvailable(frontdesk.rooms);
 }
 
 // ----------------- guest search functionality ------------------ //
@@ -212,18 +220,18 @@ function createCalendar() {
 function displayDate() {
   event.preventDefault();
   if (event.toElement.text === undefined) {
+    } else if(event.toElement.className === 'jan') {
+    $('.selected-date').html(`January ${event.toElement.text}, 2020`);
+    formattedDateNum = `2020/01/${event.toElement.text}`;
   } else {
-  $('.selected-date').html(`January ${event.toElement.text}, 2020`)
+    $('.selected-date').html(`February ${event.toElement.text}, 2020`);
+    formattedDateNum = `2020/02/${event.toElement.text}`;
   }
+  showRoomsAvailable();
 }
 
 
 // ----------------- guest functionality ------------------ //
-
-function filterRooms() {
-  console.log(frontdesk.filterByRoomType());
-}
-
 function showName(user) {
   $('.guest-name').html(`<div class="fade-in">Welcome Back ${user.name}</div>`);
 }
@@ -256,16 +264,47 @@ function changeToFutureTab() {
 }
 
 function showRoomsAvailable() {
+  frontdesk.findFullRooms(formattedDateNum);
+  $('.room-links').children("a").remove();
+  let roomsAvaialble = frontdesk.findEmptyRooms();
+  roomsAvaialble.forEach(room => {
+    $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
+  });
+}
+
+function sortByRoomType() {
+  $('.room-links').children("a").remove();
+  // frontdesk.findFullRooms(formattedDateNum);
   let chosenRoom = roomType.options[roomType.selectedIndex].value;
-  let chosenBed = bedType.options[bedType.selectedIndex].value;
-  let chosenBidet = bidetType.options[bidetType.selectedIndex].value;
-  let bidetData = frontdesk.rooms.filter(room => {
-    return room.bidet === chosenRoom;
+  console.log(chosenRoom);
+  let roomsAvaialble = frontdesk.filterByRoomType(chosenRoom, formattedDateNum);
+  console.log(roomsAvaialble);
+  roomsAvaialble.forEach(room => {
+    $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
   });
-  let bedData = frontdesk.rooms.filter(room => {
-    return room.bedSize === chosenBed;
-  });
-  let roomData = frontdesk.rooms.filter(room => {
-    return room.roomType === chosenBidet;
-  })
+}
+
+function showSelectedRoom(event) {
+  console.log(event.target.style);
+  event.target.style.backgroundColor = 'rgb(7, 37, 38)';
+  event.target.style.color = 'white';
+  pickedRoom = (event.target.text).split(' ');
+}
+
+function resetSelection(event) {
+  $('.selected-date').html(``);
+  $('.room-links').children("a").remove();
+  event.target.style.backgroundColor = '';
+}
+
+function createReservation(event) {
+  let userData = user.bookRoom(pickedRoom[1]);
+  frontdesk.addRoomToBooking(user);
+}
+
+function changeMonths() {
+  $('#feb-calendar').toggleClass('hidden');
+  $('#jan-calendar').toggleClass('hidden');
+  $('#jan-btn').toggleClass('hidden');
+  $('#feb-btn').toggleClass('hidden');
 }
