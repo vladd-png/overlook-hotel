@@ -131,26 +131,28 @@
         </div>
         <div class="room-data">
           <p>Choose Room Type</p>
-          <select>
-            <option value="single">Single</option>
-            <option value="suite">Suite</option>
-            <option value="residential suite">Residential Suite</option>
+          <select id="rooms">
+            <option class="room" value="single">Single</option>
+            <option class="room" value="junior suite">Junior Suite</option>
+            <option class="room" value="suite">Suite</option>
+            <option class="room" value="residential suite">Residential Suite</option>
           </select>
           <p>Choose Bed Size</p>
-          <select>
-            <option value="full">Full</option>
-            <option value="queen">Queen</option>
-            <option value="king">King</option>
+          <select id="beds">
+            <option class="bed" value="full">Full</option>
+            <option class="bed" value="queen">Queen</option>
+            <option class="bed" value="king">King</option>
           </select>
           <p>Optional Bidet</p>
-          <select>
-            <option value="true">Yes Please</option>
-            <option value="false">No Thank You</option>
+          <select id="bidets">
+            <option class="bidet" value="true">Yes Please</option>
+            <option class="bidet" value="false">No Thank You</option>
           </select>
         </div>
+        <button class="login-btn" id="room-btn">Filter</button>
         <div class="vertical-menu">
           <a href="#" class="active">Available Rooms</a>
-          <a href="#">Link 1</a>
+          <!-- <a href="#">Link 1</a>
           <a href="#">Link 2</a>
           <a href="#">Link 3</a>
           <a href="#">Link 4</a>
@@ -159,7 +161,7 @@
           <a href="#">Link 7</a>
           <a href="#">Link 8</a>
           <a href="#">Link 9</a>
-          <a href="#">Link 10</a>
+          <a href="#">Link 10</a> -->
         </div>
       </div>
       <div id="past-rooms" class="hidden">
