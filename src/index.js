@@ -105,6 +105,7 @@ function findUser(allUsers) {
     return user.id === id;
   });
   user = new User(myUser);
+  showName(myUser);
   // console.log(user);
 }
 
@@ -201,8 +202,12 @@ function createCalendar() {
 }
 
 
-// ----------------- guest filter functionality ------------------ //
+// ----------------- guest functionality ------------------ //
 
 function filterRooms() {
   console.log(frontdesk.filterByRoomType());
+}
+
+function showName(user) {
+  $('.guest-name').html(`<div class="fade-in">Welcome Back ${user.name}</div>`);
 }
