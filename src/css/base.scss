@@ -353,15 +353,24 @@ tbody a:hover{
   font-family: $sans-serif;
 }
 
-.selected{
-	background: blue;
+#feb-btn,
+#jan-btn {
+	font-size: 1em;
+	background-color: $primary-background;
+	height: 50px;
+	font-family: $sans-serif;
+	color: $accent-color2;
+	margin-bottom: 0px; 
 }
-
-.selected a{
-	color: white;
-}
-
 // ----------------------- guest styling ------------------- //
+
+.title-logo {
+	position: absolute;
+	top: 50px;
+	height: 150px;
+	margin-top: -50px;
+	padding: 0px;
+}
 
 #guest-page {
 	background-image: url("../images/forest-bg.jpg");
@@ -436,7 +445,7 @@ tbody a:hover{
   overflow-y: auto;
 	font-family: $sans-serif;
 	margin-left: 270px;
-	margin-top: -228px;
+	margin-top: -268px;
 }
 
 .vertical-menu a {
@@ -452,7 +461,7 @@ tbody a:hover{
 }
 
 .vertical-menu a.active {
-  background-color: $accent-color3;
+  background-color: $primary-background;
   color: $accent-color2;
 }
 
