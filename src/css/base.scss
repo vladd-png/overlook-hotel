@@ -416,12 +416,10 @@ tbody a:hover{
 }
 
 .booking-data {
-	display: block;
 	font-size: 1.5em;
 	color: $accent-color2;
 	font-family: $sans-serif;
 	padding: 15px;
-	margin-top: 50px;
 }
 
 .room-data {
@@ -432,12 +430,13 @@ tbody a:hover{
 
 .vertical-menu {
 	position: absolute;
+	font-size: 0.8em;
   width: 400px;
-  height: 315px;
+  height: 335px;
   overflow-y: auto;
 	font-family: $sans-serif;
 	margin-left: 270px;
-	margin-top: -328px;
+	margin-top: -228px;
 }
 
 .vertical-menu a {
@@ -459,6 +458,7 @@ tbody a:hover{
 
 #room-btn {
 	height: 35px;
+	display: block;
 }
 
 // ----------------------- guest name animation ------------------- //
