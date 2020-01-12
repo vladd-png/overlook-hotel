@@ -411,6 +411,26 @@ tbody a:hover{
 	padding-top: 5px;
 }
 
+.booking-data {
+	font-size: 1.5em;
+	color: $accent-color2;
+	font-family: $sans-serif;
+	position: absolute;
+	top: 220px;
+	display: block;
+	padding: 15px;
+	margin-left: -20px;
+}
+
+.room-data {
+	top: 300px;
+	margin-left: 50px;
+	line-height: 30px;
+	@extend .booking-data
+}
+
+
+
 // ----------------------- guest name animation ------------------- //
 
 .fade-in {
