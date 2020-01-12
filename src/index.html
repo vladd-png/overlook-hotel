@@ -120,32 +120,38 @@
     		</table>
       </div>
       <div class="booking-form">
-        <h3 class="booking" id="">Book A Reservation</h3>
-        <h3 class="booking" id="inactive-tab">Past Reservations</h3>
-        <h3 class="booking" id="inactive-tab">Upcoming Reservations</h3>
+        <h3 class="booking" id="book">Book A Reservation</h3>
+        <h3 class="booking inactive-tab" id="past">Past Reservations</h3>
+        <h3 class="booking inactive-tab" id="future">Upcoming Reservations</h3>
         <button class="login-btn" id="reso-btn">Click to Book</button>
       </div>
-      <div class="booking-data">
-        <p>Date Selected <div class="selected-date"></div></p>
+      <div id="book-room">
+        <div class="booking-data">
+          <p>Date Selected <div class="selected-date"></div></p>
+        </div>
+        <div class="room-data">
+          <p>Choose Room Type</p>
+          <select>
+            <option value="single">Single</option>
+            <option value="suite">Suite</option>
+            <option value="residential suite">Residential Suite</option>
+          </select>
+          <p>Choose Preferred Bed Size</p>
+          <select>
+            <option value="full">Full</option>
+            <option value="queen">Queen</option>
+            <option value="king">King</option>
+          </select>
+          <p>Optional Bidet</p>
+          <select>
+            <option value="true">Yes Please</option>
+            <option value="false">No Thank You</option>
+          </select>
+        </div>
       </div>
-      <div class="room-data">
-        <p>Choose Room Type</p>
-        <select>
-          <option value="single">Single</option>
-          <option value="suite">Suite</option>
-          <option value="residential suite">Residential Suite</option>
-        </select>
-        <p>Choose Preferred Bed Size</p>
-        <select>
-          <option value="full">Full</option>
-          <option value="queen">Queen</option>
-          <option value="king">King</option>
-        </select>
-        <p>Optional Bidet</p>
-        <select>
-          <option value="true">Yes Please</option>
-          <option value="false">No Thank You</option>
-        </select>
+      <div id="past-rooms" class="hidden">
+      </div>
+      <div id="future-rooms"  class="hidden">
       </div>
     </section>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
