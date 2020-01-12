@@ -13,8 +13,13 @@ class Frontdesk {
   populateHotel(bookings) {
     return this.bookings.push(bookings);
   }
-  filterByRoomType() {
-    console.log(this.rooms);
+  filterByRoomType(size, date) {
+    return this.rooms.reduce((acc, room) => {
+      if(room.roomType === size && room.date === date) {
+        acc.push(room)
+      }
+      return acc;
+    }, [])
   }
   calculateRoomAvailability() {
 
