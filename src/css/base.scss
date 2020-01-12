@@ -441,7 +441,7 @@ tbody a:hover{
 }
 
 .vertical-menu a {
-  background-color: #eee;
+  background-color: $accent-color2;
   color: black;
   display: block;
   padding: 12px;
@@ -453,10 +453,13 @@ tbody a:hover{
 }
 
 .vertical-menu a.active {
-  background-color: #4CAF50;
-  color: white;
+  background-color: $accent-color3;
+  color: $accent-color2;
 }
 
+#room-btn {
+	height: 35px;
+}
 
 // ----------------------- guest name animation ------------------- //
 
@@ -488,6 +491,7 @@ tbody a:hover{
   height: 0vh;
   width: 0vh;
   visibility: collapse;
+	pointer-events: none;
 }
 
 .visible {
