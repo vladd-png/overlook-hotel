@@ -36,7 +36,7 @@ const bidetType = document.querySelector('#bidets');
 
 // ----------------- event listeners ------------------ //
 
-$('.login-btn').click(checkLogin);
+$('#login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
 $('#feb-btn').click(changeMonths);
 $('#jan-btn').click(changeMonths);

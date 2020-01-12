@@ -43,9 +43,6 @@ class Frontdesk {
       return acc;
     }, []);
   }
-  calculateRoomAvailability() {
-
-  }
   removeBooking() {
 
   }
