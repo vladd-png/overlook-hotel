@@ -4,8 +4,10 @@ class User {
     this.id = user.id;
     this.pastBookings = [];
   }
-  bookRoom() {
-
+  bookRoom(roomNum) {
+    let eachRoom = {room: roomNum}
+    this.pastBookings.push(eachRoom);
+    return this.pastBookings;
   }
   totalSpentMoney() {
 
