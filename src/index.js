@@ -21,7 +21,7 @@ import './images/sunlight.svg';
 import './images/avatar.png';
 
 let user, booking, manager, frontdesk;
-let dateNowResult;
+let dateNowResult, pickedRoom;
 
 
 // ----------------- variable declarations ------------------ //
@@ -39,11 +39,17 @@ const bidetType = document.querySelector('#bidets');
 $('.login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
 $('.test').click(filterRooms);
-$('#calendar').click(displayDate);
+$('#jan-calendar').click(displayDate);
+$('#feb-calendar').click(displayDate);
 $('#book').click(changeToBookTab);
 $('#past').click(changeToPastTab);
 $('#future').click(changeToFutureTab);
 $('#room-btn').mouseup(showRoomsAvailable);
+$('#reset-btn').click(resetSelection);
+$('.vertical-menu').click(showSelectedRoom);
+$('#reso-btn').click(createReservation);
+$('#feb-btn').click(changeMonths);
+$('#jan-btn').click(changeMonths);
 
 // ----------------- fairy animation ------------------ //
 
@@ -209,11 +215,14 @@ function createCalendar() {
 }
 
 function displayDate() {
+  console.log(event);
   event.preventDefault();
   if (event.toElement.text === undefined) {
-  } else {
-  $('.selected-date').html(`January ${event.toElement.text}, 2020`)
-  }
+  } else if(event.toElement.className === 'jan') {
+  $('.selected-date').html(`January ${event.toElement.text}, 2020`);
+} else {
+  $('.selected-date').html(`February ${event.toElement.text}, 2020`);
+}
   showRoomsAvailable(event.toElement)
 }
 
@@ -258,9 +267,41 @@ function changeToFutureTab() {
 function showRoomsAvailable(event) {
   $('.room-links').children("a").remove();
   let chosenRoom = roomType.options[roomType.selectedIndex].value;
+  console.log(event);
   let dateChosen = event.text;
   let roomsAvaialble = frontdesk.filterByRoomType(chosenRoom, dateChosen);
   roomsAvaialble.forEach(room => {
     $('.room-links').append(`<a href="#">Room ${room.number} for $${room.costPerNight} a Night is Available</a>`)
   });
+}
+
+function showSelectedRoom(event) {
+  console.log(event.target.style);
+  event.target.style.backgroundColor = 'rgb(7, 37, 38)';
+  event.target.style.color = 'white';
+  pickedRoom = (event.target.text).split(' ');
+}
+
+function resetSelection(event) {
+  $('.selected-date').html(``);
+  $('.room-links').children("a").remove();
+  event.target.style.backgroundColor = '';
+}
+
+function createReservation(event) {
+  let userData = user.bookRoom(pickedRoom[1]);
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user),
+  });
+}
+
+function changeMonths() {
+  $('#feb-calendar').toggleClass('hidden');
+  $('#jan-calendar').toggleClass('hidden');
+  $('#jan-btn').toggleClass('hidden');
+  $('#feb-btn').toggleClass('hidden');
 }
