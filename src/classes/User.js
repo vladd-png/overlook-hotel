@@ -7,8 +7,12 @@ class User {
   bookRoom(roomNum) {
     //this should be a post request to bookings
   }
-  totalSpentMoney() {
-
+  totalSpentMoney(allRooms) {
+    let total = 0;
+    allRooms.forEach(room => {
+      total += room.costPerNight;
+    })
+    return total;
   }
   checkPastBookings(bookings, user) {
     bookings.forEach(booking => {
