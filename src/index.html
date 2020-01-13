@@ -14,7 +14,7 @@
         <h1 class="login-instructions">Welcome Valued Hylian</h1>
         <h2 class="login-instructions">Please Login with Existing Player Name and Dungeon Key</h2>
         <div class="input">
-          <input autocomplete="off" maxlength="20" class="user-input" id="user-name" placeholder="Player Name" value="customer21"></input>
+          <input autocomplete="off" maxlength="20" class="user-input" id="user-name" placeholder="Player Name" value="manager"></input>
           <input autocomplete="off" maxlength="20" class="user-input" id="user-password" type="password" placeholder="Dungeon Key"></input>
         </div>
         <p id="error-message" class="hidden">Please Enter Player Information</p>
@@ -23,18 +23,19 @@
       </div>
     </section>
     <section id="manager-page" class="hidden">
+      <img src="./images/HH-logo.svg" id="logo-for-manager" class="title-logo hidden" alt="Hotel Hyrule Company Logo">
       <div id="display-data">
         <p class="data-title">Today's Numbers For</p>
         <div id="todays-date"></div>
         <p class="data-title">Total Day's Revenue</p>
-        <div id="todays-revenue">$17,342</div>
+        <div id="todays-revenue"></div>
         <div class="room-data">
           <div id="pie"></div>
           <div class="data-wrapper">
             <div id="rooms-available"></div>
-            <p>17 Rooms Available</p>
+            <p id="room-avail"></p>
             <div id="rooms-unavailable"></div>
-            <p>88% Occupied</p>
+            <p id="hotel-occ"></p>
           </div>
         </div>
       </div>
@@ -42,11 +43,12 @@
         <p class="data-title">Search for Guest</p>
         <div class="user-data">
           <title>Guest Name</title>
-          <input autocomplete="off" maxlength="20" class="user-input" id="search-name" placeholder="Hylian Name"></input>
+          <input autocomplete="off" maxlength="20" class="user-input" id="search-name" placeholder="Hylian ID Number"></input>
           <button class="search-btn">Search For Guest</button>
-          <p>Past Reservations</p>
-          <div class="past-res"></div>
-          <p>Total Revenue</p>
+          <div class="reservation-menu">
+            <a class="active past-res">All Reservations</a>
+          </div>
+          <p>Total Revenue From</p>
           <div class="guest-revenue"></div>
         </div>
         <img src="./images/avatar.png" class="avatar" alt="Profile Picture of Guest">
@@ -122,7 +124,7 @@
         <button id="feb-btn" class="">Show February</button>
         <table id="feb-calendar" class="hidden" summary="a february calendar">
     			<caption>
-    				<div class="calendar-month">February</div>
+    				<div class="feb-month">February</div>
     			</caption>
     			<thead>
     				<tr>
