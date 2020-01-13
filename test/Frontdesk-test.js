@@ -5,13 +5,11 @@ import Frontdesk from '../src/classes/Frontdesk'
 import Room from '../src/classes/Rooms'
 
 describe('Frontdesk', function() {
-  let frontdesk, room, room1, room2, roomNum2, roomNum7;
+  let frontdesk, room, room1, room2;
 
   beforeEach(() => {
-    room1 = {number: 2, roomType: "suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 477.38 };
-    room2 = {number: 7, roomType: "single room", bidet: false, bedSize: "queen", numBeds: 2, costPerNight: 231.46 };
-    roomNum2 = new Room(room1);
-    roomNum7 = new Room(room2);
+    room1 = new Room ({number: 2, roomType: "suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 477.38 });
+    room2 = new Room ({number: 7, roomType: "single room", bidet: false, bedSize: "queen", numBeds: 2, costPerNight: 231.46 });
     frontdesk = new Frontdesk();
   });
 
@@ -24,10 +22,15 @@ describe('Frontdesk', function() {
   });
 
   it('should keep track of rooms', function() {
-    expect(frontdesk.rooms).to.deep.equal([roomNum2, roomNum7]);
+    expect(frontdesk.rooms).to.deep.equal([room1, room2]);
   });
 
   describe('Should Filter by Room Type', function() {
+    
+    it('should filter only rooms that match', function() {
+      console.log(frontdesk);
+      expect(frontdesk.filterByRoomType('full', '2020/01/24')).to.equal([room1])
+    });
 
   });
 
