@@ -1,8 +1,8 @@
-# Welcome to Hotel Hyrule
+## Welcome to Hotel Hyrule
 
 ### Ever Wanted to Spend the Weekend in the city of Hyrule? Well here's your chance.
 
-# Setup
+## Setup
 
 Feel free to pull down this repo, run `'npm install' `
 
@@ -13,11 +13,17 @@ For Logging in:
 - To be a customer, use 'customer' + any # 1-50 with the password of 'overlook2019'
 - To be a manager, use 'manager' with the password of 'overlook2019'
 
-# Wins
+## Wins
 
-# Challenges
+## Challenges
 
-# Future Iterations
+## Future Iterations
 
-# Login Page
+## Login Page
+![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
+
+## User Reservation Page
+![alt text](https://media.giphy.com/media/Kb4pRsR36SLdEG9354/giphy.gif "Logo Title Text 1");
+
+## Manager Page
 ![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
