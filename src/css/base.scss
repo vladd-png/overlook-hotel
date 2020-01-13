@@ -192,6 +192,10 @@ img.glitter-fairy {
   height: 550px;
 }
 
+#display-data-form {
+	@extend #display-data
+}
+
 #logo-for-manager {
 	height: 100px;
 }

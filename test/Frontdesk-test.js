@@ -26,7 +26,7 @@ describe('Frontdesk', function() {
   });
 
   describe('Should Filter by Room Type', function() {
-    
+
     it('should filter only rooms that match', function() {
       console.log(frontdesk);
       expect(frontdesk.filterByRoomType('full', '2020/01/24')).to.equal([room1])

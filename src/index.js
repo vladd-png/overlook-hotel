@@ -44,8 +44,8 @@ $('#jan-btn').click(changeMonths);
 $('#book').click(changeToBookTab);
 $('#past').click(changeToPastTab);
 $('#future').click(changeToFutureTab);
-$('#jan-calendar').mouseup(displayDate);
-$('#feb-calendar').mouseup(displayDate);
+$('#jan-calendar').click(displayDate);
+$('#feb-calendar').click(displayDate);
 $('#room-btn').click(sortByRoomType);
 $('#reset-btn').click(resetSelection);
 $('.vertical-menu').click(showSelectedRoom);
@@ -70,6 +70,7 @@ for (let i = 40; i < 50; i++) {
   const el = document.createElement('img')
   el.src = './images/fairy.png'
   el.className = 'glitter-fairy'
+  el.alt = '8-bit fairy image'
   el.style.top = myRand() + '%'
   el.style.left = myRand() + '%'
   el.style.animationDelay = delay
@@ -326,8 +327,8 @@ function changeMonths() {
 function showHomePage() {
   $('#login-page').removeClass('hidden').addClass('visible');
   $('#guest-page').addClass(' hidden').removeClass('visible');
-  $('#manager-page').addClass('hidden');
-  $('#logo-for-manager').addClass('hidden');
+  $('#manager-page').addClass('hidden').removeClass('visible');
+  $('#logo-for-manager').addClass('hidden').removeClass('visible');
 }
 
 // ----------------- manager login funcitonality ------------------ //
