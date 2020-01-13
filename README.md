@@ -20,4 +20,4 @@ For Logging in:
 # Future Iterations
 
 # Login Page
-![alt text](http://g.recordit.co/DJNQItmNXK.gif "Logo Title Text 1");
+![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
