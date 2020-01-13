@@ -213,7 +213,7 @@ function sortGuest(allUsers) {
 }
 
 function populateData(user) {
-  $('.past-res').html(``);
+  $('.past-res').html(`<a class="active">All Reservations</a>`);
   let totalSpent = 0;
   let usersPastBookings = user.checkPastBookings(frontdesk.bookings, user.id);
   user.pastBookings.forEach(booking => {
@@ -282,8 +282,8 @@ function changeToFutureTab() {
 }
 
 function showRoomsAvailable() {
+  $('.room-links').children('a').remove();
   frontdesk.findFullRooms(formattedDateNum);
-  $('.room-links').children("a").remove();
   let roomsAvaialble = frontdesk.findEmptyRooms();
   roomsAvaialble.forEach(room => {
     $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
