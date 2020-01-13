@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <title>Hotel Hyrule</title>
-    <link rel="icon" type="image/png" href="./images/fairy.png">
+    <link rel="icon" type="image/png" href="./images/fairy.png" alt="8-bit fairy image that glitters">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito+Sans|PT+Sans+Caption&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -14,8 +14,10 @@
         <h1 class="login-instructions">Welcome Valued Hylian</h1>
         <h2 class="login-instructions">Please Login with Existing Player Name and Dungeon Key</h2>
         <div class="input">
-          <input autocomplete="off" maxlength="20" class="user-input" id="user-name" placeholder="Player Name" value="manager"></input>
-          <input autocomplete="off" maxlength="20" class="user-input" id="user-password" type="password" placeholder="Dungeon Key"></input>
+          <label for="user-name"></label>
+          <input autocomplete="off" maxlength="20" name="user-name" class="user-input" id="user-name" placeholder="Player Name" value="manager"></input>
+          <label for="user-password"></label>
+          <input autocomplete="off" maxlength="20" name="user-password" class="user-input" id="user-password" type="password" placeholder="Dungeon Key"></input>
         </div>
         <p id="error-message" class="hidden">Please Enter Player Information</p>
         <button class="login-btn" id="login-btn">Login</button>
@@ -24,7 +26,7 @@
     </section>
     <section id="manager-page" class="hidden">
       <img src="./images/HH-logo.svg" id="logo-for-manager" class="title-logo hidden" alt="Hotel Hyrule Company Logo">
-      <div id="display-data">
+      <div id="display-data-form">
         <p class="data-title">Today's Numbers For</p>
         <div id="todays-date"></div>
         <p class="data-title">Total Day's Revenue</p>
@@ -43,7 +45,8 @@
         <p class="data-title">Search for Guest</p>
         <div class="user-data">
           <title>Guest Name</title>
-          <input autocomplete="off" maxlength="20" class="user-input" id="search-name" placeholder="Hylian ID Number"></input>
+          <label for="search-name"></label>
+            <input autocomplete="off" maxlength="20" name="search-name" class="user-input" id="search-name" placeholder="Enter 'customer' and ID"></input>
           <button class="search-btn">Search For Guest</button>
           <div class="reservation-menu">
             <a class="active past-res">All Reservations</a>
