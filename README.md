@@ -12,3 +12,12 @@ For Logging in:
 
 - To be a customer, use 'customer' + any # 1-50 with the password of 'overlook2019'
 - To be a manager, use 'manager' with the password of 'overlook2019'
+
+# Wins
+
+# Challenges
+
+# Future Iterations
+
+# Login Page
+![alt text](http://g.recordit.co/DJNQItmNXK.gif "Logo Title Text 1");
