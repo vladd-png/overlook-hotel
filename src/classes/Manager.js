@@ -1,30 +1,26 @@
 import { } from '../index.js'
+import User from './User.js'
 
-
-class Manager {
-  constructor(name, password) {
-    // super(name, password);
+class Manager extends User {
+  constructor(data, name) {
+    super(data);
+    this.name = name;
+    this.allUsers = [];
   }
-  searchForUser() {
-    this.id
+  createUserData(user) {
+    this.allUsers.push(user)
+  }
+  searchForUser(userNum) {
+    return this.allUsers.filter(user => {
+      return user.id === userNum;
+    })
   }
   addRoomForUser() {
-    this.bookRoom();
   }
   deleteUsersReservation() {
-    frontdesk.removeBooking();
-  }
-  checkOccupiedRooms() {
-    frontdesk.calculateRoomAvailability();
-  }
-  totalDaysRevenue() {
-    frontdesk.bookings[cost * days];
-  }
-  checkRoomAvailability() {
-    frontdesk.bookings.length;
+    frontdesk.removeBooking(user);
   }
   displayApology() {
-
   }
 }
 

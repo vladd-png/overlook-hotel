@@ -5,15 +5,17 @@ class User {
     this.pastBookings = [];
   }
   bookRoom(roomNum) {
-    let eachRoom = {room: roomNum}
-    this.pastBookings.push(eachRoom);
-    return this.pastBookings;
+    //this should be a post request to bookings
   }
   totalSpentMoney() {
 
   }
-  checkPastBookings() {
-
+  checkPastBookings(bookings, user) {
+    bookings.forEach(booking => {
+      if(booking.userID === user) {
+        this.pastBookings.push(booking)
+      }
+    });
   }
 }
 

@@ -25,7 +25,7 @@ body {
 	overflow: hidden;
 }
 
-// ----------------------- login page ------------------- //
+// ----------------------- login page -------------------
 
 #hotel-logo {
   margin-top: -20px;
@@ -112,7 +112,7 @@ h2 {
   font-size: 0.8em;
 }
 
-// ----------------------- fairy animation ------------------- //
+// ----------------------- fairy animation -------------------
 
 img.glitter-fairy {
   position: absolute;
@@ -150,7 +150,7 @@ img.glitter-fairy {
   }
 }
 
-// ----------------------- sunrays animation ------------------- //
+// ----------------------- sunrays animation -------------------
 
 #sunlight {
   z-index: 0;
@@ -167,7 +167,7 @@ img.glitter-fairy {
   50% { opacity: 0.4 }
 }
 
-// ----------------------- manager page ------------------- //
+// ----------------------- manager page -------------------
 
 #manager-page {
   background-color: $accent-color3;
@@ -183,13 +183,17 @@ img.glitter-fairy {
 #display-data {
   margin: 10px;
   display: flex;
-  margin-top: 3%;
+  margin-top: 50px;
   flex-direction: column;
   align-items: center;
   background-color: $accent-color3;
-  width: 500px;
+  width: 100%;
   border-radius: 10px;
   height: 550px;
+}
+
+#logo-for-manager {
+	height: 100px;
 }
 
 .font-color {
@@ -198,25 +202,26 @@ img.glitter-fairy {
 }
 
 #todays-date {
+	@extend .font-color;
   margin: 25px;
-  font-size: 3.5em;
-  @extend .font-color
+  font-size: 3em;
 }
 
 .data-title {
+	@extend .font-color;
   margin: 10px;
-  font-size: 1.5em;
-	@extend .font-color
+  font-size: 1em;
 }
 
 #todays-revenue {
+	@extend .font-color;
   font-size: 4em;
-	@extend .font-color
 }
 
 .room-data {
-  display: flex;
   flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
 }
 
 #rooms-available {
@@ -224,31 +229,33 @@ img.glitter-fairy {
   width: 50px;
   height: 50px;
   background-color: $accent-color2;
+	margin-right: 10px;
 }
 
 #rooms-unavailable {
-  display: block;
-  width: 50px;
-  height: 50px;
+	@extend #rooms-available;
   background-color: $primary-background;
 }
 
 .data-wrapper {
+	@extend .font-color;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 25px;
   justify-content: space-around;
   padding: 15px;
-	@extend .font-color
 }
 
 .avatar {
-	height: 100px;
+	height: 105px;
+	position: absolute;
+	top: 70%;
+	left: 90%;
 }
 
 .user-data {
+	@extend .font-color;
 	font-size: 2em;
-	@extend .font-color
 }
 
 #search-name {
@@ -256,19 +263,24 @@ img.glitter-fairy {
 }
 
 .search-btn {
-	@extend .login-btn
+	@extend .login-btn;
 }
 
-// ----------------------- pie graph for rooms ------------------- //
+.guest-revenue {
+	font-size: 0.8em;
+}
+
+// ----------------------- pie graph for rooms -------------------
 
 #pie {
-  margin: 20px;
+	margin-left: 35%;
   overflow: hidden;
   background: $accent-color2;
   border-radius: 100%;
   height: calc(var(--size, 200) * 1px);
   position: relative;
   width: calc(var(--size, 200) * 1px);
+
 }
 
 .pie-segment {
@@ -277,6 +289,8 @@ img.glitter-fairy {
   transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--offset, 0) * 1deg));
   transform-origin: 50% 100%;
   width: 100%;
+	z-index: 10;
+
 }
 
 .pie-segment:before {
@@ -289,7 +303,28 @@ img.glitter-fairy {
   width: 100%;
 }
 
+.reservation-menu {
+	font-size: 0.5em;
+  width: 500px;
+  height: 270px;
+  overflow-y: auto;
+	font-family: $sans-serif;
+	margin: 15px;
+}
 
+.reservation-menu a {
+  background-color: $accent-color2;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.reservation-menu a.active {
+  background-color: $primary-background;
+  color: $accent-color2;
+	padding: 15px;
+}
 
 // ----------------------- calendar styles ------------------- //
 
@@ -353,14 +388,17 @@ tbody a:hover{
   font-family: $sans-serif;
 }
 
-#feb-btn,
+
 #jan-btn {
 	font-size: 1em;
 	background-color: $primary-background;
-	height: 50px;
 	font-family: $sans-serif;
 	color: $accent-color2;
-	margin-bottom: 0px; 
+	margin-bottom: 0px;
+}
+
+#feb-btn {
+	@extend #jan-btn
 }
 // ----------------------- guest styling ------------------- //
 
@@ -428,7 +466,6 @@ tbody a:hover{
 	font-size: 1.5em;
 	color: $accent-color2;
 	font-family: $sans-serif;
-	padding: 15px;
 }
 
 .room-data {
@@ -499,6 +536,8 @@ tbody a:hover{
 .hidden {
   height: 0vh;
   width: 0vh;
+	margin: 0vh;
+	padding: 0vh;
   visibility: collapse;
 	pointer-events: none;
 }
