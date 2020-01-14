@@ -14,13 +14,14 @@ class Frontdesk {
   findFullRooms(date) {
     this.unavailableRooms = [];
     this.bookings.filter(booking => {
+      console.log(date);
       if (booking.date === date && !this.unavailableRooms.includes(booking.roomNumber)) {
         this.unavailableRooms.push(booking.roomNumber);
       }
     });
   }
   findEmptyRooms() {
-    this.findFullRooms();
+    // this.findFullRooms(date);
     return this.rooms.reduce((acc, room) => {
       if(!this.unavailableRooms.includes(room.number)) {
         acc.push(room);
@@ -29,6 +30,7 @@ class Frontdesk {
     }, [])
   }
   filterByRoomType(size, date) {
+    this.findFullRooms(date);
     return this.rooms.reduce((acc, room) => {
       if(room.roomType === size) {
         if(!this.unavailableRooms.includes(room.number)) {
