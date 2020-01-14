@@ -29,7 +29,6 @@ class Frontdesk {
     }, [])
   }
   filterByRoomType(size, date) {
-    this.findFullRooms(date);
     return this.rooms.reduce((acc, room) => {
       if(room.roomType === size) {
         if(!this.unavailableRooms.includes(room.number)) {
@@ -57,7 +56,7 @@ class Frontdesk {
   totalDaysRevenue(date) {
     let total = 0;
     this.rooms.forEach(room => {
-      for(var i =0; i< this.rooms.length; i++) {
+      for(var i = 0; i < this.rooms.length; i++) {
         if(room.number === this.unavailableRooms[i]) {
           total += room.costPerNight;
         }
