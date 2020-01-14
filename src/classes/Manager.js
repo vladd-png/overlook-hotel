@@ -1,11 +1,15 @@
-// import { } from '../index.js'
-// import User from './User.js'
+import domUpdates from '../DOMupdates.js';
+import User from './User';
 
-class Manager {
+
+class Manager extends User {
   constructor(data, name) {
-    // super(data);
+    super(data);
     this.name = name;
     this.allUsers = [];
+  }
+  showDate(dn) {
+    domUpdates.showDateForManager(dn);
   }
   createUserData(user) {
     this.allUsers.push(user)

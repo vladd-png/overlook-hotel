@@ -1,12 +1,16 @@
 import chai from 'chai';
 const expect = chai.expect;
-
+const spies = require('chai-spies');
+chai.use(spies);
+import domUpdates from '../src/DOMupdates.js';
 import User from '../src/classes/User';
 
 describe('User', function() {
   let user, allBookings, room1, room2, room3, allRooms;
-  
+
+
   beforeEach(() => {
+    chai.spy.on(domUpdates, ['showGuestName', 'populateData'], () => {});
     room1 = { number: 15, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 294.56},
     room2 = { number: 24, roomType: "suite", bidet: false, bedSize: "queen", numBeds: 1, costPerNight: 327.24},
     room3 = { number: 12, roomType: "single room", bidet: false, bedSize: "twin", numBeds: 2, costPerNight: 172.09},
@@ -52,17 +56,31 @@ describe('User', function() {
     expect(user.name).to.deep.equal("Leatha Ullrich");
   });
 
-  it('should be able to bookRoom', function() {
-
+  it('should show user name on the page', function() {
+    user.showName(user);
+    expect(domUpdates.showGuestName).to.have.been.called(1);
   });
 
-  it.skip('should know its pastBookings', function() {
+  it('should show user data on the page', function() {
+    user.showUserData(user);
+    expect(domUpdates.populateData).to.have.been.called(1);
+  });
+
+  it.skip('should be able to bookRoom', function() {
+  });
+
+  it('should know its pastBookings', function() {
     user.checkPastBookings(allBookings, user.id);
     expect(user.pastBookings).to.deep.equal(allBookings);
   });
 
-  it.skip('should know its totalSpentMoney', function() {
+  it('should know its totalSpentMoney', function() {
     expect(user.totalSpentMoney(allRooms)).to.equal(793.89);
   });
+
+  afterEach(function() {
+    chai.spy.restore(domUpdates);
+  });
+
 
 });

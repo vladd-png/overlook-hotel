@@ -64,8 +64,8 @@ function checkLogin(event) {
 
 function sortLogin() {
   loadHotel();
-  formatDate();
   loginManager();
+  formatDate();
   if (userName.value === 'manager') {
     domUpdates.loadManagerPage();
   } else {
@@ -113,7 +113,7 @@ function findUser(allUsers) {
     return user.id === id;
   });
   user = new User(myUser);
-  domUpdates.showGuestName(myUser);
+  user.showName(myUser);
 }
 
 function loginManager() {
@@ -157,7 +157,7 @@ function formatDate() {
   } else {
     dateNowResult += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
   }
-  domUpdates.showDateForManager(dn);
+  manager.showDate(dn);
 }
 
 function loadHotel() {
@@ -190,7 +190,7 @@ function sortGuest(allUsers) {
     return user.id === id;
   });
   user = new User(myUser)
-  domUpdates.populateData(user, frontdesk);
+  user.showUserData(user, frontdesk);
 }
 
 
