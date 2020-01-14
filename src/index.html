@@ -196,28 +196,35 @@
         <h3 class="booking inactive-tab" id="future">Upcoming Reservations</h3>
         <button class="login-btn" id="reso-btn">Click to Book</button>
       </div>
-      <div id="book-room">
-        <div class="booking-data">
-          <p>Select A Date<div class="selected-date"></div></p>
-        </div>
-        <div class="room-data">
-          <p>Choose Room Type</p>
-          <select id="rooms">
-            <option class="room" value="single room">Single</option>
-            <option class="room" value="junior suite">Junior Suite</option>
-            <option class="room" value="suite">Suite</option>
-            <option class="room" value="residential suite">Residential Suite</option>
-          </select>
-        <button class="login-btn" id="room-btn">Filter</button>
-        <button class="login-btn" id="reset-btn">Reset Selection</button>
-        <div class="vertical-menu">
-          <a class="active room-links">Available Rooms</a>
-        </div>
+    <div id="book-room">
+      <div class="booking-data">
+        <p>Select A Date<div class="selected-date"></div></p>
       </div>
-      <div id="past-rooms" class="hidden">
+      <div class="room-data">
+        <p>Choose Room Type</p>
+        <select id="rooms">
+          <option class="room" value="single room">Single</option>
+          <option class="room" value="junior suite">Junior Suite</option>
+          <option class="room" value="suite">Suite</option>
+          <option class="room" value="residential suite">Residential Suite</option>
+        </select>
+      <button class="login-btn" id="room-btn">Filter</button>
+      <button class="login-btn" id="reset-btn">Reset Selection</button>
+      <div class="vertical-menu">
+        <a class="active room-links">Available Rooms</a>
       </div>
-      <div id="future-rooms"  class="hidden">
+    </div>
+    </div>
+    <div id="past-rooms" class="hidden">
+      <div class="vertical-menu">
+        <a class="active reso-links" id="past-resos">Past Reservations</a>
       </div>
+    </div>
+    <div id="future-rooms"  class="hidden">
+      <div class="vertical-menu">
+        <a class="active reso-links" id="future-resos">Upcoming Reservations</a>
+      </div>
+    </div>
     </section>
   </body>
 </html>
