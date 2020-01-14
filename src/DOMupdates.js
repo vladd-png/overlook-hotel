@@ -77,6 +77,37 @@ let domUpdates = {
   },
   calculateDaysRevenue(totalRevenue) {
     $('#todays-revenue').html(`$ ${totalRevenue}`)
+  },
+  sortByRoomType(roomsAvaialble) {
+    $('.room-links').children('a').remove();
+    roomsAvaialble.forEach(room => {
+      $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
+    });
+  },
+  // --------------------------- Guest Tab Functionality -----------------
+  changeToBookTab() {
+    $('#book-room').removeClass('hidden');
+    $('#past-rooms').addClass('hidden');
+    $('#future-rooms').addClass('hidden');
+    $('#book').removeClass('inactive-tab');
+    $('#past').addClass('inactive-tab');
+    $('#future').addClass('inactive-tab');
+  },
+  changeToPastTab() {
+    $('#past-rooms').removeClass('hidden');
+    $('#book-room').addClass('hidden');
+    $('#future-rooms').addClass('hidden');
+    $('#past').removeClass('inactive-tab');
+    $('#book').addClass('inactive-tab');
+    $('#future').addClass('inactive-tab');
+  },
+  changeToFutureTab() {
+    $('#future-rooms').removeClass('hidden');
+    $('#past-rooms').addClass('hidden');
+    $('#book-room').addClass('hidden');
+    $('#future').removeClass('inactive-tab');
+    $('#past').addClass('inactive-tab');
+    $('#book').addClass('inactive-tab');
   }
 }
 
