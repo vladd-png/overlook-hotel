@@ -9,7 +9,6 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   mode: 'development',
-  // CSS and file (image) loaders
   module: {
     rules: [
       {
