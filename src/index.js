@@ -41,9 +41,7 @@ $('#login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
 $('#feb-btn').click(changeMonths);
 $('#jan-btn').click(changeMonths);
-$('#book').click(changeToBookTab);
-$('#past').click(changeToPastTab);
-$('#future').click(changeToFutureTab);
+$('.booking-form').click(changeUsersTab);
 $('#jan-calendar').click(displayDate);
 $('#feb-calendar').click(displayDate);
 $('#room-btn').click(sortByRoomType);
@@ -67,9 +65,9 @@ function checkLogin(event) {
 function sortLogin() {
   loadHotel();
   formatDate();
+  loginManager();
   if (userName.value === 'manager') {
     domUpdates.loadManagerPage();
-    loginManager();
   } else {
     domUpdates.loadGuestPage();
     loginGuest();
@@ -213,41 +211,21 @@ function displayDate() {
 
 
 // ----------------- guest functionality ------------------ //
-
-function changeToBookTab() {
-  $('#book-room').removeClass('hidden');
-  $('#past-rooms').addClass('hidden');
-  $('#future-rooms').addClass('hidden');
-  $('#book').removeClass('inactive-tab');
-  $('#past').addClass('inactive-tab');
-  $('#future').addClass('inactive-tab');
-}
-
-function changeToPastTab() {
-  $('#past-rooms').removeClass('hidden');
-  $('#book-room').addClass('hidden');
-  $('#future-rooms').addClass('hidden');
-  $('#past').removeClass('inactive-tab');
-  $('#book').addClass('inactive-tab');
-  $('#future').addClass('inactive-tab');
-}
-
-function changeToFutureTab() {
-  $('#future-rooms').removeClass('hidden');
-  $('#past-rooms').addClass('hidden');
-  $('#book-room').addClass('hidden');
-  $('#future').removeClass('inactive-tab');
-  $('#past').addClass('inactive-tab');
-  $('#book').addClass('inactive-tab');
+function changeUsersTab(event) {
+  debugger;
+  if(event.target.innerText === 'Past Reservations') {
+    domUpdates.changeToPastTab();
+  } else if(event.target.innerText === 'Upcoming Reservations') {
+    domUpdates.changeToFutureTab();
+  } else {
+    domUpdates.changeToBookTab();
+  }
 }
 
 function sortByRoomType() {
-  $('.room-links').children("a").remove();
   let chosenRoom = roomType.options[roomType.selectedIndex].value;
   let roomsAvaialble = frontdesk.filterByRoomType(chosenRoom, formattedDateNum);
-  roomsAvaialble.forEach(room => {
-    $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
-  });
+  domUpdates.sortByRoomType(roomsAvaialble);
 }
 
 function showSelectedRoom(event) {
@@ -258,7 +236,7 @@ function showSelectedRoom(event) {
 
 function resetSelection(event) {
   $('.selected-date').html(``);
-  $('.room-links').children("a").remove();
+  $('.room-links').children('a').remove();
   event.target.style.backgroundColor = '';
 }
 
