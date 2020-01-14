@@ -7,14 +7,14 @@ class Manager extends User {
     this.name = name;
     this.allUsers = [];
   }
-  createUserData(user) {
-    this.allUsers.push(user)
-  }
-  searchForUser(userNum) {
-    return this.allUsers.filter(user => {
-      return user.id === userNum;
-    })
-  }
+  // createUserData(user) {
+  //   this.allUsers.push(user)
+  // }
+  // searchForUser(userNum) {
+  //   return this.allUsers.filter(user => {
+  //     return user.id === userNum;
+  //   })
+  // }
   addRoomForUser() {
   }
   deleteUsersReservation() {

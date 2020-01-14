@@ -17,7 +17,6 @@ $accent-color3: rgba(7, 37, 38, 0.6);
 		box-sizing: border-box;
 		margin: 0px;
     font-family: $sans-serif;
-
 	}
 }
 
@@ -87,7 +86,7 @@ h2 {
   height: 40px;
   font-size: 1em;
   padding: 5px;
-  margin: 20px;;
+  margin: 20px;
   width: 300px;
   background-color: $accent-color2;
 }
@@ -193,7 +192,7 @@ img.glitter-fairy {
 }
 
 #display-data-form {
-	@extend #display-data
+	@extend #display-data;
 }
 
 #logo-for-manager {
