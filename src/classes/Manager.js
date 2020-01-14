@@ -1,9 +1,9 @@
-import { } from '../index.js'
-import User from './User.js'
+// import { } from '../index.js'
+// import User from './User.js'
 
-class Manager extends User {
+class Manager {
   constructor(data, name) {
-    super(data);
+    // super(data);
     this.name = name;
     this.allUsers = [];
   }

@@ -1,13 +1,16 @@
 import chai from 'chai';
 const expect = chai.expect;
-chai.spy.on(frontdesk, [totalDaysRevenue, findFullRooms], () => {});
+// const spies = require('chai-spies');
+// chai.use(spies);
+
+// chai.spy.on(frontdesk, [totalDaysRevenue, findFullRooms], () => {});
 
 import Manager from '../src/classes/Manager'
 // import User from '../src/classes/User';
 
 
 describe('Manager', function() {
-  let manager, user, allBookings, room1, room2, room3, allRooms;
+  let manager, user, allBookings, room1, room2, room3, room4, allRooms;
 
   beforeEach(() => {
     manager = new Manager('manager', 'overlook2019'),
@@ -42,11 +45,11 @@ describe('Manager', function() {
       name: "Leatha Ullrich",
       pastBookings: [allBookings]
     }
-  });
+  })
 
   it('should Be able to SearchForUser', function() {
     manager.createUserData(user);
-    expect(manager.searchForUser(user.id)).to.equal(9)
+    expect(manager.searchForUser(user.id)).to.deep.equal([user])
   });
 
   it('should be able to addRoomForUser', function() {
@@ -55,25 +58,7 @@ describe('Manager', function() {
   it('should be able to deleteUsersReservation', function() {
   });
 
-  it('should checkOccupiedRooms', function() {
-    expect(frontdesk.findFullRooms("2020/01/24")).to.deep.equal([room1, room2, room3])
-  });
-
-  it('should be able to see totalDaysRevenue', function() {
-    expect(frontdesk.totalDaysRevenue('2020/01/10')).to.equal(8697.85)
-
-  });
-
-  it('should be able to checkRoomAvailability', function() {
-    expect(frontdesk.findEmptyRooms()).to.deep.equal([room4])
-  });
-
   it('should be able to displayApology', function() {
   });
-
-  describe('', function() {
-
-  });
-
 
 });
