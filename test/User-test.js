@@ -4,7 +4,7 @@ const expect = chai.expect;
 import User from '../src/classes/User';
 
 describe('User', function() {
-  // let user, allBookings, room1, room2, room3, allRooms;
+  let user, allBookings, room1, room2, room3, allRooms;
   //
   // beforeEach(() => {
   //   room1 = { number: 15, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 294.56},
