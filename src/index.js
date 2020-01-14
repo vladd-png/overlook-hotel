@@ -8,6 +8,7 @@ import Frontdesk from './classes/Frontdesk.js';
 import Manager from './classes/Manager.js';
 import Room from './classes/Rooms.js';
 import User from './classes/User.js';
+import domUpdates from './DOMupdates.js';
 
 
 // An example of how you tell webpack to use a CSS (SCSS) file
@@ -31,9 +32,8 @@ const errorMsh = document.querySelector('#error-message');
 const userName = document.querySelector('#user-name');
 const guestName = document.querySelector('#search-name');
 const roomType = document.querySelector('#rooms');
-const bedType = document.querySelector('#beds');
-const bidetType = document.querySelector('#bidets');
-// const userSearchName = document.querySelector('#search-name');
+// const bedType = document.querySelector('#beds');
+// const bidetType = document.querySelector('#bidets');
 
 // ----------------- event listeners ------------------ //
 
@@ -41,9 +41,7 @@ $('#login-btn').click(checkLogin);
 $('.search-btn').click(findGuest);
 $('#feb-btn').click(changeMonths);
 $('#jan-btn').click(changeMonths);
-$('#book').click(changeToBookTab);
-$('#past').click(changeToPastTab);
-$('#future').click(changeToFutureTab);
+$('.booking-form').click(changeUsersTab);
 $('#jan-calendar').click(displayDate);
 $('#feb-calendar').click(displayDate);
 $('#room-btn').click(sortByRoomType);
@@ -55,7 +53,27 @@ $('.title-logo').click(showHomePage);
 
 // ----------------- helper functions ------------------ //
 
+function checkLogin(event) {
+  event.preventDefault();
+  if (userName.value === '') {
+    domUpdates.showError();
+  } else {
+    sortLogin();
+  }
+}
 
+function sortLogin() {
+  loadHotel();
+  formatDate();
+  loginManager();
+  if (userName.value === 'manager') {
+    domUpdates.loadManagerPage();
+  } else {
+    domUpdates.loadGuestPage();
+    loginGuest();
+    domUpdates.createCalendar();
+  }
+}
 
 // ----------------- fairy animation ------------------ //
 
@@ -82,39 +100,6 @@ for (let i = 40; i < 50; i++) {
 
 // ----------------- login functionality ------------------ //
 
-function checkLogin(event) {
-  event.preventDefault();
-  if (userName.value === '') {
-    $('#error-message').removeClass('hidden')
-  } else {
-    sortLogin();
-  }
-}
-
-function sortLogin() {
-  loadHotel();
-  formatDate();
-  if (userName.value === 'manager') {
-    loadManagerPage();
-    loginManager();
-  } else {
-    loadGuestPage();
-    loginGuest();
-    createCalendar();
-  }
-}
-
-function loadManagerPage() {
-  $('#login-page').addClass('hidden').removeClass('visible');
-  $('#manager-page').removeClass('hidden').addClass('visible');
-  $('#logo-for-manager').removeClass('hidden');
-}
-
-function loadGuestPage() {
-  $('#login-page').addClass('hidden').removeClass('visible');
-  $('#guest-page').removeClass('hidden').addClass('visible');
-}
-
 function loginGuest() {
   fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
     .then(response => response.json())
@@ -128,7 +113,7 @@ function findUser(allUsers) {
     return user.id === id;
   });
   user = new User(myUser);
-  showName(myUser);
+  domUpdates.showGuestName(myUser);
 }
 
 function loginManager() {
@@ -158,10 +143,7 @@ function createPieGraph(bookings) {
     }
   })
   unavailableRooms = ((totalRooms / 25) * 360);
-  if (unavailableRooms >= 180) {
-    $('#pie').html(`<div class="pie-segment" style="--offset: 0; --value: ${unavailableRooms}"></div>`);
-  }
-  $('#pie').append(`<div class="pie-segment" style="--offset: 0; --value: 180"></div>`);
+  domUpdates.buildPieGraph(unavailableRooms);
 }
 
 function formatDate() {
@@ -175,9 +157,7 @@ function formatDate() {
   } else {
     dateNowResult += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
   }
-  for(var i = 0; i < 15; i++) {
-    $('#todays-date').append(`${dn[i]}`);
-  }
+  domUpdates.showDateForManager(dn);
 }
 
 function loadHotel() {
@@ -210,31 +190,11 @@ function sortGuest(allUsers) {
     return user.id === id;
   });
   user = new User(myUser)
-  populateData(user);
-}
-
-function populateData(user) {
-  $('.past-res').html(`<a class="active">All Reservations</a>`);
-  let totalSpent = 0;
-  let usersPastBookings = user.checkPastBookings(frontdesk.bookings, user.id);
-  user.pastBookings.forEach(booking => {
-    let eachRoom = frontdesk.rooms[booking.roomNumber];
-    totalSpent += eachRoom.costPerNight;
-    $('.past-res').append(`<a href="#">Room ${booking.roomNumber} on ${booking.date} for $${eachRoom.costPerNight} a night.</a>`);
-    $('.guest-revenue').html(`${user.name} is $${totalSpent.toFixed(2)}`);
-  });
+  domUpdates.populateData(user, frontdesk);
 }
 
 
 // ----------------- calendar functionality ------------------ //
-
-function createCalendar() {
-  let d = new Date();
-  let month = (d.getMonth());
-  let allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  $('.calendar-month').text(allMonths[month]);
-  $('.feb-month').text(allMonths[1]);
-}
 
 function displayDate() {
   event.preventDefault();
@@ -246,58 +206,26 @@ function displayDate() {
     $('.selected-date').html(`February ${event.toElement.text}, 2020`);
     formattedDateNum = `2020/02/${event.toElement.text}`;
   }
-  showRoomsAvailable();
+  domUpdates.showRoomsAvailable(frontdesk, formattedDateNum);
 }
 
 
 // ----------------- guest functionality ------------------ //
-function showName(user) {
-  $('.guest-name').html(`<div class="fade-in">Welcome Back ${user.name}</div>`);
-}
-
-function changeToBookTab() {
-  $('#book-room').removeClass('hidden');
-  $('#past-rooms').addClass('hidden');
-  $('#future-rooms').addClass('hidden');
-  $('#book').removeClass('inactive-tab');
-  $('#past').addClass('inactive-tab');
-  $('#future').addClass('inactive-tab');
-}
-
-function changeToPastTab() {
-  $('#past-rooms').removeClass('hidden');
-  $('#book-room').addClass('hidden');
-  $('#future-rooms').addClass('hidden');
-  $('#past').removeClass('inactive-tab');
-  $('#book').addClass('inactive-tab');
-  $('#future').addClass('inactive-tab');
-}
-
-function changeToFutureTab() {
-  $('#future-rooms').removeClass('hidden');
-  $('#past-rooms').addClass('hidden');
-  $('#book-room').addClass('hidden');
-  $('#future').removeClass('inactive-tab');
-  $('#past').addClass('inactive-tab');
-  $('#book').addClass('inactive-tab');
-}
-
-function showRoomsAvailable() {
-  $('.room-links').children('a').remove();
-  frontdesk.findFullRooms(formattedDateNum);
-  let roomsAvaialble = frontdesk.findEmptyRooms();
-  roomsAvaialble.forEach(room => {
-    $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
-  });
+function changeUsersTab(event) {
+  debugger;
+  if(event.target.innerText === 'Past Reservations') {
+    domUpdates.changeToPastTab();
+  } else if(event.target.innerText === 'Upcoming Reservations') {
+    domUpdates.changeToFutureTab();
+  } else {
+    domUpdates.changeToBookTab();
+  }
 }
 
 function sortByRoomType() {
-  $('.room-links').children("a").remove();
   let chosenRoom = roomType.options[roomType.selectedIndex].value;
   let roomsAvaialble = frontdesk.filterByRoomType(chosenRoom, formattedDateNum);
-  roomsAvaialble.forEach(room => {
-    $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
-  });
+  domUpdates.sortByRoomType(roomsAvaialble);
 }
 
 function showSelectedRoom(event) {
@@ -308,7 +236,7 @@ function showSelectedRoom(event) {
 
 function resetSelection(event) {
   $('.selected-date').html(``);
-  $('.room-links').children("a").remove();
+  $('.room-links').children('a').remove();
   event.target.style.backgroundColor = '';
 }
 
@@ -318,17 +246,11 @@ function createReservation(event) {
 }
 
 function changeMonths() {
-  $('#feb-calendar').toggleClass('hidden');
-  $('#jan-calendar').toggleClass('hidden');
-  $('#jan-btn').toggleClass('hidden');
-  $('#feb-btn').toggleClass('hidden');
+  domUpdates.changeMonths();
 }
 
 function showHomePage() {
-  $('#login-page').removeClass('hidden').addClass('visible');
-  $('#guest-page').addClass(' hidden').removeClass('visible');
-  $('#manager-page').addClass('hidden').removeClass('visible');
-  $('#logo-for-manager').addClass('hidden').removeClass('visible');
+  domUpdates.showHomePage();
 }
 
 // ----------------- manager login funcitonality ------------------ //
@@ -336,21 +258,12 @@ function showHomePage() {
 function displayRoomsAvailable() {
   frontdesk.findFullRooms(dateNowResult);
   let freeRooms = 25 - frontdesk.unavailableRooms.length
-  if(freeRooms === 1) {
-    $('#rooms-available').html(`<p>There  Is ${freeRooms} Room Availble Today`);
-  } else {
-    $('#room-avail').html(`<p>There Are ${freeRooms} Rooms Availble Today`);
-  }
-  $('#hotel-occ').html(`${100 - freeRooms}% Occupied`);
+  domUpdates.displayRoomAvailability(freeRooms);
 }
 
 function calculateDaysRevenue() {
   let totalRevenue = (frontdesk.totalDaysRevenue(dateNowResult)).toFixed(2);
-  $('#todays-revenue').html(`$ ${totalRevenue}`)
+  domUpdates.calculateDaysRevenue(totalRevenue);
 }
-
-
-
-
 
 //

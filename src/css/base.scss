@@ -331,6 +331,10 @@ img.glitter-fairy {
 
 // ----------------------- calendar styles ------------------- //
 
+.calendar-form {
+	margin-top: 100px;
+}
+
 caption {
 	background: $primary-background;
 	height: 3em;
@@ -462,7 +466,6 @@ tbody a:hover{
 
 #book-room {
 	position: absolute;
-
 }
 
 .booking-data {
@@ -485,7 +488,7 @@ tbody a:hover{
   overflow-y: auto;
 	font-family: $sans-serif;
 	margin-left: 270px;
-	margin-top: -268px;
+	margin-top: -254px;
 }
 
 .vertical-menu a {
@@ -509,6 +512,15 @@ tbody a:hover{
 	height: 35px;
 	display: block;
 }
+
+// ----------------------- past reservations ------------------- //
+
+#past-resos {
+
+}
+
+// ----------------------- upcoming reservations ------------------- //
+
 
 // ----------------------- guest name animation ------------------- //
 
