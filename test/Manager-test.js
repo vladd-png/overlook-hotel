@@ -47,6 +47,10 @@ describe('Manager', function() {
     }
   })
 
+  it('should have access to the User class', function() {
+    expect(manager).to.be.an.instanceOf(User);
+  });
+
   it('should show date on the page', function() {
     chai.spy.on(domUpdates, ['showDateForManager'], () => {});
     manager.showDate('2020/01/10');

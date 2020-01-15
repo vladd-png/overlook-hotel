@@ -41,9 +41,6 @@ class Frontdesk {
       return acc;
     }, []);
   }
-  removeBooking(user) {
-
-  }
   findReservation(e, user) {
     let resoThatMatches;
     this.rooms.forEach(room => {
@@ -58,7 +55,6 @@ class Frontdesk {
     return resoThatMatches;
   }
   addRoomToBooking (reservation, date, user) {
-    console.log(date);
     let newBooking = {
       'userID': user.id,
       'date': date,
@@ -71,7 +67,6 @@ class Frontdesk {
       },
       body: JSON.stringify(newBooking),
     })
-    .then(response => response.json())
     .then(res => console.log(res))
     .catch(error => console.log(error))
   }
@@ -94,7 +89,6 @@ class Frontdesk {
     .catch(error => console.log(error))
   }
   removeRoomFromBooking (id) {
-    console.log(id)
     let idObject = {
       'id': id
     }
