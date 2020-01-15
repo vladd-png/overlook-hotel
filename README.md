@@ -34,7 +34,7 @@ For Logging in:
 ![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
 
 ## User Reservation Page
-![alt text](https://media.giphy.com/media/SAN0FBs7RhO5dDShrw/giphy.gif "Logo Title Text 1");
+![alt text](https://media.giphy.com/media/Kb4pRsR36SLdEG9354/giphy.gif "Logo Title Text 1");
 
 ## Manager Page
 ![alt text](https://media.giphy.com/media/SAN0FBs7RhO5dDShrw/giphy.gif "Logo Title Text 1");
