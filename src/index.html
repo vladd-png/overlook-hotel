@@ -47,13 +47,17 @@
           <title>Guest Name</title>
           <label for="search-name"></label>
             <input autocomplete="off" maxlength="20" name="search-name" class="user-input" id="search-name" placeholder="Enter 'customer' and ID"></input>
-          <button class="search-btn">Search For Guest</button>
+            <button class="search-btn">Search For Guest</button>
+            <button class="book-btn">Book For Guest</button>
+            <p class="hidden dateInput">Date: <input type="date" id="datepicker"><button id='book-for-user'>Search</button></p>
           <div class="reservation-menu">
             <a class="active past-res">All Reservations</a>
           </div>
           <p>Total Revenue From</p>
           <div class="guest-revenue"></div>
         </div>
+        <button id="book-user-room">Book For User</button>
+        <button id="remove-user-booking">Remove For User</button>
         <img src="./images/avatar.png" class="avatar" alt="Profile Picture of Guest">
       </div>
     </section>

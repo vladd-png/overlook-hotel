@@ -47,6 +47,10 @@ describe('Manager', function() {
     }
   })
 
+  it('should have access to the User class', function() {
+    expect(manager).to.be.an.instanceOf(User);
+  });
+
   it('should show date on the page', function() {
     chai.spy.on(domUpdates, ['showDateForManager'], () => {});
     manager.showDate('2020/01/10');
@@ -56,6 +60,7 @@ describe('Manager', function() {
   it('should Be able to SearchForUser', function() {
     manager.createUserData(user);
     expect(manager.searchForUser(user.id)).to.deep.equal([user])
+    //seperate test for create user data
   });
 
   it.skip('should be able to displayApology', function() {

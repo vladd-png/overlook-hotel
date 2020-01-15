@@ -65,10 +65,7 @@ describe('User', function() {
     user.showUserData(user);
     expect(domUpdates.populateData).to.have.been.called(1);
   });
-
-  it.skip('should be able to bookRoom', function() {
-  });
-
+  
   it('should know its pastBookings', function() {
     user.checkPastBookings(allBookings, user.id);
     expect(user.pastBookings).to.deep.equal(allBookings);

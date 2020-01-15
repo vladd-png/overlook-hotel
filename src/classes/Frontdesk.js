@@ -41,27 +41,42 @@ class Frontdesk {
       return acc;
     }, []);
   }
-  removeBooking(user) {
-
-  }
   findReservation(e, user) {
     let resoThatMatches;
     this.rooms.forEach(room => {
       if(room.number === Number(e.target.id) && !this.unavailableRooms.includes(room.number)) {
         resoThatMatches = room;
+      } else {
+        if(room.number === Number(e.target.id)) {
+          resoThatMatches = room;
+        }
       }
     })
     return resoThatMatches;
   }
   addRoomToBooking (reservation, date, user) {
     let newBooking = {
-      id: 12085397154,
-      userID: user.id,
-      date: date,
-      roomNumber: reservation.number,
-      roomServiceCharges: []
+      'userID': user.id,
+      'date': date,
+      'roomNumber': reservation.number
     }
-    // console.log(newBooking);
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newBooking),
+    })
+    .then(res => console.log(res))
+    .catch(error => console.log(error))
+  }
+  addRoomToBookingForManager (roomID, user, date) {
+    console.log(date);
+    let newBooking = {
+      'userID': user.id,
+      'date': date,
+      'roomNumber': roomID
+    }
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
       method: 'POST',
       headers: {
@@ -72,7 +87,21 @@ class Frontdesk {
     .then(response => response.json())
     .then(res => console.log(res))
     .catch(error => console.log(error))
-  };
+  }
+  removeRoomFromBooking (id) {
+    let idObject = {
+      'id': id
+    }
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(idObject),
+    })
+    .then(res => console.log(res))
+    .catch(error => console.log(error))
+  }
   totalDaysRevenue(date) {
     let total = 0;
     this.rooms.forEach(room => {

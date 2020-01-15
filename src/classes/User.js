@@ -12,9 +12,6 @@ class User {
   showUserData(user, frontdesk) {
     domUpdates.populateData(user, frontdesk);
   }
-  bookRoom(roomNum) {
-    //this should be a post request to bookings
-  }
   totalSpentMoney(allRooms) {
     let total = 0;
     allRooms.forEach(room => {
