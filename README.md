@@ -33,6 +33,9 @@ For Logging in:
 - I want to successfully POST a booking to the bookings API data
 _ I want to succssfully DELETE a post request
 - I want to clean up when I instantiate my bookings, frontdesk, and user class, because currently they are called in multipple places depending on when they are needed, instead of all at login
+- I want to add an apology for when there is no bookings left for a certain day
+- I want to show a message when a room is succesfully posted and booked
+- I want to show a message if a fetch call fails
 
 ## Login Page
 ![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
