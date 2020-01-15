@@ -15,7 +15,14 @@ For Logging in:
 
 ## Wins
 
+- The application works
+- Was able to sort out the API data and use it effectively with a FETCH request for the application
+
 ## Challenges
+
+- Figuring out POST requests to the bookings API data
+- Organizing the project around true OOP, for the first time
+- Creating classes that ONLY deal with the data they hold
 
 ## Future Iterations
 
@@ -23,7 +30,7 @@ For Logging in:
 ![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
 
 ## User Reservation Page
-![alt text](https://media.giphy.com/media/Kb4pRsR36SLdEG9354/giphy.gif height: 100px "Logo Title Text 1");
+![alt text](https://media.giphy.com/media/Kb4pRsR36SLdEG9354/giphy.gif "Logo Title Text 1");
 
 ## Manager Page
 ![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
