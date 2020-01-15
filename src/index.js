@@ -6,7 +6,6 @@ import Room from './classes/Rooms.js';
 import User from './classes/User.js';
 import domUpdates from './DOMupdates.js';
 import './css/base.scss';
-
 import './images/forest-bg.jpg';
 import './images/HH-logo.svg';
 import './images/fairy.png';
@@ -22,9 +21,9 @@ let selectedReservation;
 
 const app = document.querySelector('#login-page');
 const errorMsh = document.querySelector('#error-message');
-const userName = document.querySelector('#user-name');
 const guestName = document.querySelector('#search-name');
 const roomType = document.querySelector('#rooms');
+const userName = document.querySelector('#user-name');
 
 // ----------------- event listeners ------------------ //
 
