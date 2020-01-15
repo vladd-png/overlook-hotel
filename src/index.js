@@ -195,7 +195,6 @@ function sortGuest(allUsers) {
 
 function addRoomForUser() {
   $('.dateInput').removeClass('hidden');
-  $('#remove-user-booking').addClass('hidden');
 }
 
 function pickDate() {

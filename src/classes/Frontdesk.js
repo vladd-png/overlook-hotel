@@ -95,14 +95,16 @@ class Frontdesk {
   }
   removeRoomFromBooking (id) {
     console.log(id)
+    let idObject = {
+      'id': id
+    }
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(id),
+      body: JSON.stringify(idObject),
     })
-    // .then(response => response.json())
     .then(res => console.log(res))
     .catch(error => console.log(error))
   }
