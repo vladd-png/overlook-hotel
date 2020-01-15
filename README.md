@@ -30,6 +30,10 @@ For Logging in:
 
 ## Future Iterations
 
+- I want to successfully POST a booking to the bookings API data
+_ I want to succssfully DELETE a post request
+- I want to clean up when I instantiate my bookings, frontdesk, and user class, because currently they are called in multipple places depending on when they are needed, instead of all at login
+
 ## Login Page
 ![alt text](https://media.giphy.com/media/TgruqCxRx72VDxPzcv/giphy.gif "Logo Title Text 1");
 
