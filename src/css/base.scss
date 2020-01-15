@@ -466,6 +466,7 @@ tbody a:hover{
 
 #book-room {
 	position: absolute;
+	// margin-left: -47%;
 }
 
 .booking-data {
@@ -515,12 +516,30 @@ tbody a:hover{
 
 // ----------------------- past reservations ------------------- //
 
-#past-resos {
+#future-vertical,
+#past-vertical {
+ margin-left: 112%;
+ margin-top: 50px;
+ width: 650px;
+ height: 300px;
+}
 
+#future-rooms,
+#past-rooms {
+	margin-left: -70%;
+ position: absolute;
+ font-size: 1.5em;
+ height: 50%;
+ width: 100%;
 }
 
 // ----------------------- upcoming reservations ------------------- //
 
+#future-resos,
+#past-resos {
+	font-family: $sans-serif;
+	color: $accent-color2;
+}
 
 // ----------------------- guest name animation ------------------- //
 
@@ -555,6 +574,7 @@ tbody a:hover{
 	padding: 0vh;
   visibility: collapse;
 	pointer-events: none;
+	position: relative;
 }
 
 .visible {

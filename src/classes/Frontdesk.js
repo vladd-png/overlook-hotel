@@ -1,3 +1,6 @@
+import Booking from './Booking.js';
+
+
 class Frontdesk {
   constructor() {
     this.name = 'Hotel Hyrule';
@@ -41,18 +44,35 @@ class Frontdesk {
   removeBooking(user) {
 
   }
-  addRoomToBooking(user) {
-    console.log(user);
-    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users', {
+  findReservation(e, user) {
+    let resoThatMatches;
+    this.rooms.forEach(room => {
+      if(room.number === Number(e.target.id) && !this.unavailableRooms.includes(room.number)) {
+        resoThatMatches = room;
+      }
+    })
+    return resoThatMatches;
+  }
+  addRoomToBooking (reservation, date, user) {
+    let newBooking = {
+      id: 12085397154,
+      userID: user.id,
+      date: date,
+      roomNumber: reservation.number,
+      roomServiceCharges: []
+    }
+    // console.log(newBooking);
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(newBooking),
     })
     .then(response => response.json())
-    // .then()
-  }
+    .then(res => console.log(res))
+    .catch(error => console.log(error))
+  };
   totalDaysRevenue(date) {
     let total = 0;
     this.rooms.forEach(room => {
