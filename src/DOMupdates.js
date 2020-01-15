@@ -17,7 +17,7 @@ let domUpdates = {
     $('#pie').append(`<div class="pie-segment" style="--offset: 0; --value: 180"></div>`);
   },
   showDateForManager(date) {
-    for(var i = 0; i < 15; i++) {
+    for (var i = 0; i < 15; i++) {
       $('#todays-date').append(`${date[i]}`);
     }
   },
@@ -40,7 +40,7 @@ let domUpdates = {
     $('.feb-month').text(allMonths[1]);
   },
   displayRoomAvailability(freeRooms) {
-    if(freeRooms === 1) {
+    if (freeRooms === 1) {
       $('#rooms-available').html(`<p>There  Is ${freeRooms} Room Availble Today`);
     } else {
       $('#room-avail').html(`<p>There Are ${freeRooms} Rooms Availble Today`);

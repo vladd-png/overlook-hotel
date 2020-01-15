@@ -16,11 +16,10 @@ let user, booking, manager, frontdesk;
 let dateNowResult, pickedRoom, formattedDateNum;
 let selectedReservation;
 
-
 // ----------------- variable declarations ------------------ //
 
 const app = document.querySelector('#login-page');
-const errorMsh = document.querySelector('#error-message');
+const errorMsg = document.querySelector('#error-message');
 const guestName = document.querySelector('#search-name');
 const roomType = document.querySelector('#rooms');
 const userName = document.querySelector('#user-name');
@@ -143,9 +142,9 @@ function formatDate() {
   let dn  = Date(Date.now()).toString();
   let month = (d.getMonth() + 1);
   if (month <= 9) {
-    dateNowResult += d.getFullYear()+"/0"+(d.getMonth()+1)+"/"+d.getDate();
+    dateNowResult += d.getFullYear() + "/0" + (d.getMonth()+1) + "/" + d.getDate();
   } else {
-    dateNowResult += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
+    dateNowResult += d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
   }
   manager.showDate(dn);
 }
@@ -189,7 +188,7 @@ function sortGuest(allUsers) {
 function displayDate() {
   event.preventDefault();
   if (event.toElement.text === undefined) {
-  } else if(event.toElement.className === 'jan') {
+  } else if (event.toElement.className === 'jan') {
     $('.selected-date').html(`January ${event.toElement.text}, 2020`);
     formattedDateNum = `2020/01/${event.toElement.text}`;
   } else {
@@ -202,10 +201,10 @@ function displayDate() {
 
 // ----------------- guest functionality ------------------ //
 function changeUsersTab(event) {
-  if(event.target.innerText === 'Past Reservations') {
+  if (event.target.innerText === 'Past Reservations') {
     domUpdates.changeToPastTab();
     user.showPastBookings(frontdesk.bookings, dateNowResult);
-  } else if(event.target.innerText === 'Upcoming Reservations') {
+  } else if (event.target.innerText === 'Upcoming Reservations') {
     domUpdates.changeToFutureTab();
     user.showFutureBookings(frontdesk.bookings, dateNowResult);
   } else {
