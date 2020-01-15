@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
 import Booking from './classes/Booking.js';
 import Frontdesk from './classes/Frontdesk.js';
@@ -9,12 +5,8 @@ import Manager from './classes/Manager.js';
 import Room from './classes/Rooms.js';
 import User from './classes/User.js';
 import domUpdates from './DOMupdates.js';
-
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/forest-bg.jpg';
 import './images/HH-logo.svg';
 import './images/fairy.png';
@@ -23,6 +15,7 @@ import './images/avatar.png';
 
 let user, booking, manager, frontdesk;
 let dateNowResult, pickedRoom, formattedDateNum;
+let selectedReservation;
 
 
 // ----------------- variable declarations ------------------ //
@@ -32,8 +25,6 @@ const errorMsh = document.querySelector('#error-message');
 const userName = document.querySelector('#user-name');
 const guestName = document.querySelector('#search-name');
 const roomType = document.querySelector('#rooms');
-// const bedType = document.querySelector('#beds');
-// const bidetType = document.querySelector('#bidets');
 
 // ----------------- event listeners ------------------ //
 
@@ -212,11 +203,12 @@ function displayDate() {
 
 // ----------------- guest functionality ------------------ //
 function changeUsersTab(event) {
-  debugger;
   if(event.target.innerText === 'Past Reservations') {
     domUpdates.changeToPastTab();
+    user.showPastBookings(frontdesk.bookings, dateNowResult);
   } else if(event.target.innerText === 'Upcoming Reservations') {
     domUpdates.changeToFutureTab();
+    user.showFutureBookings(frontdesk.bookings, dateNowResult);
   } else {
     domUpdates.changeToBookTab();
   }
@@ -232,6 +224,7 @@ function showSelectedRoom(event) {
   event.target.style.backgroundColor = 'rgb(7, 37, 38)';
   event.target.style.color = 'white';
   pickedRoom = (event.target.text).split(' ');
+  selectedReservation = frontdesk.findReservation(event, user);
 }
 
 function resetSelection(event) {
@@ -240,9 +233,8 @@ function resetSelection(event) {
   event.target.style.backgroundColor = '';
 }
 
-function createReservation(event) {
-  let userData = user.bookRoom(pickedRoom[1]);
-  frontdesk.addRoomToBooking(user);
+function createReservation() {
+  frontdesk.addRoomToBooking(selectedReservation, formattedDateNum, user);
 }
 
 function changeMonths() {
