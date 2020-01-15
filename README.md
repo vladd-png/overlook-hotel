@@ -17,12 +17,16 @@ For Logging in:
 
 - The application works
 - Was able to sort out the API data and use it effectively with a FETCH request for the application
+- Implemented SASS in the styles file, and successfully synced with WebPack
+- Really focused on TDD for this project, starting with methods in classes, and testing fully
+- Implementing spies on global or DOM elements in the MOCHA / CHAI testing suite
 
 ## Challenges
 
 - Figuring out POST requests to the bookings API data
 - Organizing the project around true OOP, for the first time
 - Creating classes that ONLY deal with the data they hold
+- Figuring out how to prioritize the requirements of the project. Seemed one path kept expanding into several other to-dos. 
 
 ## Future Iterations
 
