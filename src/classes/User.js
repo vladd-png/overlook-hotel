@@ -29,6 +29,24 @@ class User {
       }
     });
   }
+  showFutureBookings(bookings, date) {
+    let dateNum = Number(date.split('/').join(''));
+    bookings.forEach(booking => {
+      let bookDate = Number(booking.date.split('/').join(''))
+      if(booking.userID === this.id && bookDate >= dateNum) {
+        domUpdates.showFutureBookings(booking);
+      }
+    })
+  }
+  showPastBookings(bookings, date) {
+    let dateNum = Number(date.split('/').join(''));
+    bookings.forEach(booking => {
+      let bookDate = Number(booking.date.split('/').join(''))
+      if(booking.userID === this.id && bookDate < dateNum) {
+        domUpdates.showPastBookings(booking);
+      }
+    })
+  }
 }
 
 export default User;
