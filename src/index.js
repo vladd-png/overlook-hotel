@@ -205,7 +205,6 @@ function pickDate() {
 
 function addBooking() {
   let date = datePicked.value.split('-').join('/');
-  // let room = pickedRoom[1]
   frontdesk.addRoomToBookingForManager(roomID, user, date);
 }
 

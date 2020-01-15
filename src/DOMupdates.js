@@ -11,10 +11,11 @@ let domUpdates = {
     $('#logo-for-manager').removeClass('hidden');
   },
   buildPieGraph(unavailableRooms) {
+    console.log(unavailableRooms);
+    $('#pie').html(`<div class="pie-segment" style="--offset: 0; --value: -${unavailableRooms}"></div>`);
     if (unavailableRooms >= 180) {
-      $('#pie').html(`<div class="pie-segment" style="--offset: 0; --value: ${unavailableRooms}"></div>`);
+      $('#pie').append(`<div class="pie-segment" style="--offset: 0; --value: 180"></div>`);
     }
-    $('#pie').append(`<div class="pie-segment" style="--offset: 0; --value: 180"></div>`);
   },
   showDateForManager(date) {
     for (var i = 0; i < 15; i++) {
