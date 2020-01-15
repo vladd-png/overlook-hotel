@@ -329,6 +329,10 @@ img.glitter-fairy {
 	padding: 15px;
 }
 
+.book-btn {
+	@extend .search-btn;
+}
+
 // ----------------------- calendar styles ------------------- //
 
 .calendar-form {
@@ -405,7 +409,7 @@ tbody a:hover{
 }
 
 #feb-btn {
-	@extend #jan-btn
+	@extend #jan-btn;
 }
 // ----------------------- guest styling ------------------- //
 

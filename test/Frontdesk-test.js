@@ -102,6 +102,8 @@ describe('Frontdesk', function() {
     frontdesk.addRoomToBooking(booking1, '2020/01/12', user);
     expect(fetchSpy).to.have.been.called(1);
   });
+  //structore similar for delete post
+  //helper functions need to be tested as well - make sure its called
 
   afterEach(() => {
     chai.spy.restore(fetchSpy);

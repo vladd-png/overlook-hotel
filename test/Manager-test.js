@@ -56,6 +56,7 @@ describe('Manager', function() {
   it('should Be able to SearchForUser', function() {
     manager.createUserData(user);
     expect(manager.searchForUser(user.id)).to.deep.equal([user])
+    //seperate test for create user data
   });
 
   it.skip('should be able to displayApology', function() {

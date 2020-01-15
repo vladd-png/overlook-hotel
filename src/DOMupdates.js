@@ -28,7 +28,7 @@ let domUpdates = {
     user.pastBookings.forEach(booking => {
       let eachRoom = frontdesk.rooms[booking.roomNumber];
       totalSpent += eachRoom.costPerNight;
-      $('.past-res').append(`<a href="#">Room ${booking.roomNumber} on ${booking.date} for $${eachRoom.costPerNight} a night.</a>`);
+      $('.past-res').append(`<a href="#" id="${booking.id}">Room ${booking.roomNumber} on ${booking.date} for $${eachRoom.costPerNight} a night.</a>`);
       $('.guest-revenue').html(`${user.name} is $${totalSpent.toFixed(2)}`);
     })
   },
@@ -61,6 +61,14 @@ let domUpdates = {
     let roomsAvaialble = frontdesk.findEmptyRooms();
     roomsAvaialble.forEach(room => {
       $('.room-links').append(`<a href="#" id="${room.number}">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
+    });
+  },
+  showManagerRoomsAvailable(frontdesk, date) {
+    $('.past-res').children('a').remove();
+    frontdesk.findFullRooms(date);
+    let roomsAvaialble = frontdesk.findEmptyRooms();
+    roomsAvaialble.forEach(room => {
+      $('.past-res').append(`<a href="#" id="${room.number}">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
     });
   },
   changeMonths() {

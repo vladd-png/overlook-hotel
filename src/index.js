@@ -13,7 +13,7 @@ import './images/sunlight.svg';
 import './images/avatar.png';
 
 let user, booking, manager, frontdesk;
-let dateNowResult, pickedRoom, formattedDateNum;
+let dateNowResult, pickedRoom, formattedDateNum, roomID, managerDate;
 let selectedReservation;
 
 // ----------------- variable declarations ------------------ //
@@ -23,6 +23,7 @@ const errorMsg = document.querySelector('#error-message');
 const guestName = document.querySelector('#search-name');
 const roomType = document.querySelector('#rooms');
 const userName = document.querySelector('#user-name');
+const datePicked = document.querySelector('#datepicker');
 
 // ----------------- event listeners ------------------ //
 
@@ -38,6 +39,14 @@ $('#reset-btn').click(resetSelection);
 $('.vertical-menu').click(showSelectedRoom);
 $('#reso-btn').click(createReservation);
 $('.title-logo').click(showHomePage);
+$('.reservation-menu').click(showSelectedRoom);
+
+$('#book-user-room').click(addBooking);
+$('#remove-user-booking').click(removeUserReservation);
+$('.book-btn').click(addRoomForUser);
+$('#book-for-user').click(pickDate);
+$('.past-res').click(showSelectedRoom);
+
 
 
 // ----------------- helper functions ------------------ //
@@ -182,6 +191,29 @@ function sortGuest(allUsers) {
   user.showUserData(user, frontdesk);
 }
 
+// ----------------- POST / DELETE user reservation ------------------ //
+
+function addRoomForUser() {
+  $('.dateInput').removeClass('hidden');
+  $('#remove-user-booking').addClass('hidden');
+}
+
+function pickDate() {
+  let date = datePicked.value.split('-').join('/');
+  domUpdates.showManagerRoomsAvailable(frontdesk, date);
+}
+
+function addBooking() {
+  let date = datePicked.value.split('-').join('/');
+  // let room = pickedRoom[1]
+  frontdesk.addRoomToBookingForManager(roomID, user, date);
+}
+
+function removeUserReservation() {
+  $('#book-user-room').addClass('hidden');
+  console.log(roomID);
+  frontdesk.removeRoomFromBooking(roomID);
+}
 
 // ----------------- calendar functionality ------------------ //
 
@@ -222,6 +254,7 @@ function showSelectedRoom(event) {
   event.target.style.backgroundColor = 'rgb(7, 37, 38)';
   event.target.style.color = 'white';
   pickedRoom = (event.target.text).split(' ');
+  roomID = event.target.id;
   selectedReservation = frontdesk.findReservation(event, user);
 }
 
