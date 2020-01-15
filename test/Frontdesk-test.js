@@ -1,13 +1,21 @@
 import chai from 'chai';
 const expect = chai.expect;
-
+const spies = require('chai-spies');
+chai.use(spies);
+import domUpdates from '../src/DOMupdates.js';
 import Frontdesk from '../src/classes/Frontdesk';
 import Room from '../src/classes/Rooms';
 
+
 describe('Frontdesk', function() {
-  let frontdesk, room, room1, room2, booking1, booking2, booking3;
+  let frontdesk, room, room1, room2, booking1, booking2, booking3, fetchSpy, user;
 
   beforeEach(() => {
+    fetchSpy = chai.spy.on(global, 'fetch', () => {
+      return new Promise((resolve, reject) => {
+        resolve({message: "Data has been fetched"});
+      })
+    }),
     room1 = new Room ({number: 2, roomType: "suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 477.38 });
     room2 = new Room ({number: 7, roomType: "single room", bidet: false, bedSize: "queen", numBeds: 2, costPerNight: 231.46 });
     frontdesk = new Frontdesk(),
@@ -31,6 +39,11 @@ describe('Frontdesk', function() {
       date: "2020/01/24",
       roomNumber: 12,
       roomServiceCharges: [ ]
+    },
+    user = {
+      id: 9,
+      name: "Leatha Ullrich",
+      pastBookings: [booking1, booking2, booking3]
     }
   });
 
@@ -85,13 +98,13 @@ describe('Frontdesk', function() {
     });
   });
 
-  it.skip('should removeBooking', function() {
-
+  it('Should addRoomToBooking', function() {
+    frontdesk.addRoomToBooking(booking1, '2020/01/12', user);
+    expect(fetchSpy).to.have.been.called(1);
   });
 
-  it.skip('Should addRoomToBooking', function() {
-
+  afterEach(() => {
+    chai.spy.restore(fetchSpy);
   });
-
 
 });
