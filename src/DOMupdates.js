@@ -60,7 +60,7 @@ let domUpdates = {
     frontdesk.findFullRooms(date);
     let roomsAvaialble = frontdesk.findEmptyRooms();
     roomsAvaialble.forEach(room => {
-      $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
+      $('.room-links').append(`<a href="#" id="${room.number}">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
     });
   },
   changeMonths() {
@@ -81,8 +81,17 @@ let domUpdates = {
   sortByRoomType(roomsAvaialble) {
     $('.room-links').children('a').remove();
     roomsAvaialble.forEach(room => {
-      $('.room-links').append(`<a href="#">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
+      $('.room-links').append(`<a href="#" id="${room.number}">A ${room.roomType} is available for $${room.costPerNight} a Night</a>`);
     });
+
+  },
+  showFutureBookings(booking) {
+    $('.reso-links').children('a').remove();
+    $('#future-resos').append(`<a href="#"> You Have A Booking For Room ${booking.roomNumber} Coming up on ${booking.date}</a>`)
+  },
+  showPastBookings(booking) {
+    $('.reso-links').children('a').remove();
+    $('#past-resos').append(`<a href="#">You Booked Room ${booking.roomNumber} On ${booking.date}</a>`)
   },
   // --------------------------- Guest Tab Functionality -----------------
   changeToBookTab() {
