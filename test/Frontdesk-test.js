@@ -107,7 +107,9 @@ describe('Frontdesk', function() {
     frontdesk.removeRoomFromBooking(booking1, '2020/01/12', user);
     expect(fetchSpy).to.have.been.called(1);
   });
-  
+
+  //called with correct object / url
+
   //helper functions need to be tested as well - make sure its called
 
   afterEach(() => {
