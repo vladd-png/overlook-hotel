@@ -13,6 +13,8 @@ For Logging in:
 - To be a customer, use 'customer' + any # 1-50 with the password of 'overlook2019'
 - To be a manager, use 'manager' with the password of 'overlook2019'
 
+![screenshot 1](https://user-images.githubusercontent.com/53594458/76690318-7231f380-6604-11ea-86e7-acec7ae63283.png)
+
 ## Wins
 
 - The application works
