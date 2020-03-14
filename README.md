@@ -2,6 +2,11 @@
 
 ### Ever Wanted to Spend the Weekend in the city of Hyrule? Well here's your chance.
 
+## Introductions
+This was the final project for Module two of Turing. We were given six days to build out an application that simulated booking a room through a hotel, either as a manager or a customer. As a class we shared a public API, where a user could pull down data and see all the available rooms for booking. They could select a date, filter by room type, and book a room which, if successful, sent a fetch request and updated the API. As a manager you would see all the available API data on the rooms. A manager could also book a room or remove a booking with different successfull fetch requests. A major learning goal for this project was to set up the codebase with inheritance classes and well developed logic across all the classes. 
+
+![screenshot 1](https://user-images.githubusercontent.com/53594458/76690318-7231f380-6604-11ea-86e7-acec7ae63283.png)
+
 ## Setup
 
 Feel free to pull down this repo, run `'npm install' `
@@ -13,7 +18,15 @@ For Logging in:
 - To be a customer, use 'customer' + any # 1-50 with the password of 'overlook2019'
 - To be a manager, use 'manager' with the password of 'overlook2019'
 
-![screenshot 1](https://user-images.githubusercontent.com/53594458/76690318-7231f380-6604-11ea-86e7-acec7ae63283.png)
+## Technologies Used
+- HTML
+- CSS
+- JAVASCRIPT
+- OOP
+- CLASS INHERITANCE AND EXTENDS
+- MOCHA / CHAI
+- NPM
+
 
 ## Wins
 
@@ -45,3 +58,5 @@ For Logging in:
 
 ## Manager Page
 ![alt text](https://media.giphy.com/media/SAN0FBs7RhO5dDShrw/giphy.gif "Logo Title Text 1");
+
+
